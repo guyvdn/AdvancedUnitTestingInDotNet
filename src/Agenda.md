@@ -1,0 +1,19 @@
+
+- Testspecification
+- Internals visible to
+- Options
+- DateTime + Guids
+- Controller tests
+- Dependency injection tests
+- Autofixture configuration
+- Build class
+- HttpClient mocking
+- ILogger mocking
+- Fluent assertions extensions (http, ...)
+- NSubstitute Extensions
+- API Tests
+- DB setup
+- TestPrecision
+- Analyzers
+- CancellationToken
+- SQL Test column types?

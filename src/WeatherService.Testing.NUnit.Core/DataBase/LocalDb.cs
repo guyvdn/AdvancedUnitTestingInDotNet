@@ -53,6 +53,28 @@ public static class LocalDb
         connection.Open();
         using var command = new SqlCommand(commandText, connection);
         command.ExecuteNonQuery();
+    }    
+    
+    public static IEnumerable<object[]> ExecuteReader(string commandText)
+    {
+        return ExecuteReader(commandText, ConnectionString);
+    }
+
+    private static IEnumerable<object[]> ExecuteReader(string commandText, string connectionString)
+    {
+        using var connection = new SqlConnection(connectionString);
+        connection.Open();
+        using var command = new SqlCommand(commandText, connection);
+        var reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            var values = new object[reader.FieldCount];
+            reader.GetValues(values);
+            yield return values;
+        }
+
+        reader.Close();
     }
 
     /// <summary>

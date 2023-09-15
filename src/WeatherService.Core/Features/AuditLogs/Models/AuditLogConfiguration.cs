@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WeatherService.Core.DatabaseConfiguration.Constants;
-using WeatherService.Core.Features.AuditLog;
 
-namespace WeatherService.Core.DatabaseConfiguration;
+namespace WeatherService.Core.Features.AuditLogs.Models;
 
 internal sealed class AuditLogConfiguration : IEntityTypeConfiguration<AuditLog>
 {

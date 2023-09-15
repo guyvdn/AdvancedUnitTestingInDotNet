@@ -72,7 +72,7 @@ internal abstract class DbContextTestSpecification<TDbContext, TMigrationsAssemb
     }
 
     /// <summary>
-    /// Comment code in <see cref="Core.DatabaseConfiguration.AuditLogConfiguration"/> to see this test in action
+    /// Comment code in <see cref="Core.Features.AuditLogs.Models.AuditLogConfiguration"/> to see this test in action
     /// </summary>
     [Test]
     public void Configuration_should_match_sql_schema()

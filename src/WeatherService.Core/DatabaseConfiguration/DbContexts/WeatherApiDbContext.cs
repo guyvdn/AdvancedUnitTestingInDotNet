@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WeatherService.Core.Features.AuditLog;
+using WeatherService.Core.Features.AuditLogs.Models;
 
 namespace WeatherService.Core.DatabaseConfiguration.DbContexts;
 

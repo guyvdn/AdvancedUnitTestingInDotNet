@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 using Microsoft.Extensions.Options;
-using WeatherService.Core.Features.CurrentWeather;
+using WeatherService.Core.Features.WeatherForecasts.Models;
 
 namespace WeatherService.Core;
 
@@ -19,7 +19,7 @@ internal sealed class WeatherApiClient : IWeatherApiClient
         _options = options.Value;
 
         _httpClient = httpClient;
-        _httpClient.BaseAddress = new Uri("https://api.weatherapi.com");
+        _httpClient.BaseAddress = new Uri(_options.ApiUrl);
     }
 
     public async Task<WeatherResponse> GetCurrentWeatherAsync(string? city, CancellationToken cancellationToken)

@@ -3,7 +3,7 @@
 namespace WeatherService.Migrations.Migrations;
 
 [Migration(1)]
-public class M01_CreateAuditLogTable : ForwardOnlyMigration
+public sealed class M01_CreateAuditLogTable : ForwardOnlyMigration
 {
     public override void Up()
     {

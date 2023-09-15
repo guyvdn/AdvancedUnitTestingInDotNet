@@ -17,3 +17,12 @@
 - Analyzers
 - CancellationToken
 - SQL Test column types?
+- Test the tests
+- Fluent Validation Tests
+
+- Roles?
+
+Further Reading: 
+
+- https://github.com/nunit/nunit.analyzers/blob/master/documentation/index.md
+- https://github.com/bchavez/Bogus

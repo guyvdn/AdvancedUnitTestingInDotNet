@@ -1,6 +1,6 @@
 ﻿namespace WeatherService.Testing.NUnit.Core;
 
-public struct AssemblyMarker
+internal struct AssemblyMarker
 {
     
 }

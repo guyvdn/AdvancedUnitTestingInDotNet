@@ -1,8 +1,8 @@
-﻿namespace WeatherService.Core.Features.AuditLog;
+﻿namespace WeatherService.Core.Features.AuditLogs.Models;
 
-internal sealed class AuditLog
+public sealed class AuditLog // TODO Make internal again
 {
-    public int AuditLogId { get; protected set; }
+    public int AuditLogId { get; set; }
 
     public required string NameIdentifier { get; set; }
 

@@ -113,6 +113,11 @@ public sealed class Build
     public static CancellationToken CancellationToken()
     {
         return new CancellationTokenSource().Token;
+    }  
+    
+    public static CancellationToken CancellationToken(TimeSpan delay)
+    {
+        return new CancellationTokenSource((int)delay.TotalMilliseconds).Token;
     }
 
     public static T EnumValue<T>()

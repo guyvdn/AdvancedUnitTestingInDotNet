@@ -1,4 +1,5 @@
-﻿using Microsoft.Net.Http.Headers;
+﻿using System.Reflection;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 
 namespace WeatherService.Api.Configuration;
@@ -46,6 +47,8 @@ internal static class SwaggerConfiguration
                     Array.Empty<string>()
                 }
             });
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            o.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
     }
 

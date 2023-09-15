@@ -1,0 +1,16 @@
+﻿using WeatherService.Core.Features.AuditLogs.Models;
+
+namespace WeatherService.Api.Features.AuditLogs;
+
+internal static class AuditLogMapper
+{
+    public static Representation.AuditLog ToRepresentation(AuditLog auditLog)
+    { 
+        return new Representation.AuditLog
+        {
+            NameIdentifier = auditLog.NameIdentifier,
+            Message = auditLog.Message,
+            TimeStampUTC = auditLog.TimeStampUTC,
+        };
+    }
+}

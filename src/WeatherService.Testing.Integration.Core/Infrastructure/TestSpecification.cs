@@ -1,19 +1,27 @@
 ﻿using System.Net.Http.Headers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NSubstitute;
+using WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
 using WeatherService.Testing.NUnit.Core.Specifications;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
-internal abstract class TestSpecification<TController, TRequest> : TestSpecificationBase, IDisposable
+internal abstract partial class TestSpecification<TController, TRequest> : TestSpecification
     where TController : ControllerBase
     where TRequest : IBaseRequest
+{
+}
+
+internal abstract partial class TestSpecification : TestSpecificationBase, IDisposable
 {
     private readonly Dictionary<Type, object> _mocks = new();
 
     protected TestApplicationFactory Factory { get; private set; } = default!;
 
     protected HttpClient Client { get; private set; } = default!;
+
+    protected Seed Seed { get; private set; } = default!;
 
     /// <summary>
     /// Can be used to customize AppSettings before creating the TestApplicationFactory.
@@ -27,12 +35,12 @@ internal abstract class TestSpecification<TController, TRequest> : TestSpecifica
     public virtual async Task OneTimeSetUp()
     {
         Factory = new TestApplicationFactory(_mocks, GetAppSettings());
-        
-        //SetupMocks();
+
+        SetupMocks();
 
         Client = Factory.CreateClient();
         Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "TestScheme");
-        //Seed = new Seed(Fixture, Client, Factory.Services);
+        Seed = new Seed(Client, Factory.Services);
 
         await ArrangeAsync();
 
@@ -47,6 +55,24 @@ internal abstract class TestSpecification<TController, TRequest> : TestSpecifica
             TestSink.PrintAllEvents();
             throw;
         }
+    }
+
+    private void SetupMocks()
+    {
+        MockHttpClient();
+    }
+
+    private T AddMock<T>()
+        where T : class
+    {
+        var mock = Substitute.For<T>();
+        AddMock<T>(mock);
+        return mock;
+    }
+
+    private void AddMock<T>(T mock)
+    {
+        _mocks.Add(typeof(T), mock!);
     }
 
     protected virtual void Arrange()

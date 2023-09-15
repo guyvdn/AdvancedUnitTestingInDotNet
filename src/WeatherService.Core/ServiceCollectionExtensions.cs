@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using WeatherService.Core.DatabaseConfiguration.DbContexts;
+using WeatherService.Core.Infrastructure;
+using WeatherService.Core.Services;
 
 namespace WeatherService.Core;
 
@@ -15,7 +17,7 @@ public static class ServiceCollectionExtensions
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
-        services.AddDbContext<WeatherApiDbContext>(o => o.UseSqlServer(connectionString));
+        services.AddDbContextFactory<WeatherApiDbContext>(o => o.UseSqlServer(connectionString));
 
         services.TryAddScoped<IWeatherRepository, WeatherRepository>();
 
@@ -24,8 +26,14 @@ public static class ServiceCollectionExtensions
         services.AddMediatR(cfg =>
         {
             cfg.RegisterServicesFromAssemblyContaining<AssemblyMarker>();
+            cfg.AddOpenRequestPreProcessor(typeof(ValidationBehavior<>));
         });
 
         services.AddHttpContextAccessor();
+
+        services.AddValidatorsFromAssemblyContaining<AssemblyMarker>(includeInternalTypes: true);
+
+        services.TryAddSingleton<IFileService, FileService>();
+        services.TryAddSingleton<IFileNameService, FileNameService>();
     }
 }

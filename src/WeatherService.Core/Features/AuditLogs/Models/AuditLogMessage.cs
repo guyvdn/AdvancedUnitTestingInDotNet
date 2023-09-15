@@ -1,6 +1,6 @@
-﻿namespace WeatherService.Core.Features.AuditLog;
+﻿namespace WeatherService.Core.Features.AuditLogs.Models;
 
-internal readonly record struct AuditLogMessage
+public readonly record struct AuditLogMessage  // TODO Make internal again
 {
     private readonly string _message;
 

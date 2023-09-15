@@ -18,6 +18,29 @@ internal abstract class ControllerTestSpecification<TController>
             .ConvertAll(x => new TestCaseData(x).SetName(name: $"{x.Name}_{suffix}"));
     }
 
+    [Test]
+    public void Should_be_public()
+    {
+        typeof(TController).IsPublic.Should().BeTrue(" SwaggerGen will not find them otherwise");
+    }
+
+    [Test]
+    public void Should_be_abstract_or_sealed()
+    {
+        var isSealedOrAbstract = typeof(TController).IsSealed || 
+                                 typeof(TController).IsAbstract;
+
+        isSealedOrAbstract.Should().BeTrue(" we care about preformance");
+    }
+
+    [Test]
+    public void Should_have_explicit_Authorization()
+    {
+        typeof(TController).GetCustomAttributes().Should().Contain(x =>
+            x.GetType().IsAssignableTo(typeof(AuthorizeAttribute)) ||
+            x.GetType().IsAssignableTo(typeof(AllowAnonymousAttribute)), because: "safety first");
+    }
+
     [TestCaseSource(nameof(AllMethods), new object[] { "should_be_async" })]
     public void All_methods_should_be_async_ActionResult(MethodInfo method)
     {
@@ -49,14 +72,6 @@ internal abstract class ControllerTestSpecification<TController>
                 arguments.Should().Contain(x => x.ArgumentType == typeof(Type)).Which.Value.Should().NotBe(typeof(void), because: "the return type should be defined so that it will show in Swagger documentation");
             }
         }
-    }
-
-    [Test]
-    public void Should_have_explicit_Authorization()
-    {
-        typeof(TController).GetCustomAttributes().Should().Contain(x =>
-            x.GetType().IsAssignableTo(typeof(AuthorizeAttribute)) ||
-            x.GetType().IsAssignableTo(typeof(AllowAnonymousAttribute)), because: "safety first");
     }
 
     private static bool IsHttpGet(MemberInfo method)

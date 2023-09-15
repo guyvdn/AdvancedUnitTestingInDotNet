@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WeatherService.Core.Features.AuditLog;
 
-namespace WeatherService.Core.DatabaseConfiguration;
+namespace WeatherService.Core.Features.AuditLogs.Models;
 
 internal sealed class AuditLogMessageConverter : ValueConverter<AuditLogMessage, string>
 {

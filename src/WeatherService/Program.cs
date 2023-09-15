@@ -1,7 +1,7 @@
 using WeatherService.Api.Configuration;
+using WeatherService.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 // Add services to the container.
 
@@ -20,14 +20,14 @@ builder.Services.AddWeatherServiceCore(
 
 var app = builder.Build();
 
-//var options = app.Services.GetRequiredService<IOptions<WeatherApiOptions>>().Value;
-
 app.UseSwaggerWithAuthentication(o => app.Configuration.GetSection(nameof(SwaggerConfigurationOptions)).Bind(o));
 
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

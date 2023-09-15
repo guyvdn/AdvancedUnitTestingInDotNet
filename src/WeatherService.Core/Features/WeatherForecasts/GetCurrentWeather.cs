@@ -1,21 +1,24 @@
 ﻿using System.Security.Claims;
-using MediatR;
 using Microsoft.AspNetCore.Http;
-using WeatherService.Core.Features.AuditLog;
+using WeatherService.Core.Features.AuditLogs.Models;
+using WeatherService.Core.Features.WeatherForecasts.Models;
 
-namespace WeatherService.Core.Features.CurrentWeather;
+namespace WeatherService.Core.Features.WeatherForecasts;
 
 public static class GetCurrentWeather
 {
     public sealed class Request : IRequest<WeatherResponse>
     {
-        public required string? City { get; set; }
+        public required string City { get; init; }
     }
 
-    internal sealed class Validator
+    internal sealed class Validator : AbstractValidator<Request>
     {
-        // TODO
-    }
+        public Validator()
+        {
+            RuleFor(x => x.City).NotEmpty();
+        }
+    }  
 
     internal sealed class Handler : IRequestHandler<Request, WeatherResponse>
     {
@@ -36,8 +39,8 @@ public static class GetCurrentWeather
         public async Task<WeatherResponse> Handle(Request request, CancellationToken cancellationToken)
         {
             var user = _httpContextAccessor.HttpContext!.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
-            
-            await _weatherRepository.AddAuditLogAsync(new AuditLog.AuditLog
+
+            await _weatherRepository.AddAuditLogAsync(new AuditLog
             {
                 NameIdentifier = user,
                 Message = AuditLogMessage.GetCurrentWeatherWasCalledForCity(request.City),

@@ -4,7 +4,7 @@ namespace WeatherService.Core.Features.AuditLogs;
 
 public static class GetAuditLogs
 {
-    public sealed class Request : IRequest<IEnumerable<AuditLog>>
+    public sealed class Request : IRequest<List<AuditLog>>
     {
         public required int NumberOfDays { get; init; }
     }
@@ -18,7 +18,7 @@ public static class GetAuditLogs
         }
     }
 
-    internal sealed class Handler : IRequestHandler<Request, IEnumerable<AuditLog>>
+    internal sealed class Handler : IRequestHandler<Request, List<AuditLog>>
     {
         private readonly IWeatherRepository _weatherRepository;
 
@@ -27,7 +27,7 @@ public static class GetAuditLogs
             _weatherRepository = weatherRepository;
         }
 
-        public Task<IEnumerable<AuditLog>> Handle(Request request, CancellationToken cancellationToken)
+        public Task<List<AuditLog>> Handle(Request request, CancellationToken cancellationToken)
         {
             return _weatherRepository.GetAuditLogsAsync(request.NumberOfDays, cancellationToken);
         }

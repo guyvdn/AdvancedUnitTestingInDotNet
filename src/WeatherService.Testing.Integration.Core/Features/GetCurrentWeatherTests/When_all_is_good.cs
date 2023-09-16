@@ -25,7 +25,7 @@ internal sealed class When_all_is_good : TestSpecification<WeatherForecastsContr
 
     protected override async Task ActAsync()
     {
-        _response = await Client.GetFromJsonAsync<WeatherForecast>("WeatherForecast");
+        _response = await Client.GetFromJsonAsync<WeatherForecast>("WeatherForecasts");
     }
 
     [Test]

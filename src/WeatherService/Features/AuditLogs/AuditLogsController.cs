@@ -22,6 +22,8 @@ public sealed class AuditLogsController : ControllerBase
             NumberOfDays = numberOfDays
         };
 
-        return Ok(await _sender.Send(request, cancellationToken));
+        var auditLogs = await _sender.Send(request, cancellationToken);
+
+        return Ok(auditLogs.ConvertAll(log => log.ToRepresentation()));
     }
 }

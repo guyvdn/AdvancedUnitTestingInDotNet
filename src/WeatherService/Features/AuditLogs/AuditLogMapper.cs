@@ -4,12 +4,13 @@ namespace WeatherService.Api.Features.AuditLogs;
 
 internal static class AuditLogMapper
 {
-    public static Representation.AuditLog ToRepresentation(AuditLog auditLog)
+    public static Representation.AuditLog ToRepresentation(this AuditLog auditLog)
     { 
         return new Representation.AuditLog
         {
+            AuditLogId = auditLog.AuditLogId,
             NameIdentifier = auditLog.NameIdentifier,
-            Message = auditLog.Message,
+            Message = "blah",//auditLog.Message.Value(),
             TimeStampUTC = auditLog.TimeStampUTC,
         };
     }

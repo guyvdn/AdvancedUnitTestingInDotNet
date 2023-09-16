@@ -21,6 +21,7 @@
 - Fluent Validation Tests
 
 - Roles?
+- - StringToFileNameEquivalencyStep?
 
 Further Reading: 
 

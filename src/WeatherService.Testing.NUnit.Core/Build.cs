@@ -149,4 +149,9 @@ public sealed class Build
     {
         return items.OrderBy(_ => Random.Next());
     }
+
+    public static string Base64String()
+    {
+        return Convert.ToBase64String(Bytes());
+    }
 }

@@ -1,6 +1,4 @@
-﻿using AutoFixture;
-
-namespace WeatherService.Testing.NUnit.Core.Customizations;
+﻿namespace WeatherService.Testing.NUnit.Core.Customizations;
 
 internal static class FixtureExtensions
 {

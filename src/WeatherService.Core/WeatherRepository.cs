@@ -8,7 +8,7 @@ internal interface IWeatherRepository
 {
     Task AddAuditLogAsync(AuditLog auditLog, CancellationToken cancellationToken);
 
-    Task<IEnumerable<AuditLog>> GetAuditLogsAsync(int numberOfDays, CancellationToken cancellationToken);
+    Task<List<AuditLog>> GetAuditLogsAsync(int numberOfDays, CancellationToken cancellationToken);
 }
 
 internal sealed class WeatherRepository: IWeatherRepository
@@ -28,7 +28,7 @@ internal sealed class WeatherRepository: IWeatherRepository
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<AuditLog>> GetAuditLogsAsync(int numberOfDays, CancellationToken cancellationToken)
+    public async Task<List<AuditLog>> GetAuditLogsAsync(int numberOfDays, CancellationToken cancellationToken)
     {
         await using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
 

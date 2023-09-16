@@ -1,41 +1,26 @@
-﻿using WeatherService.Testing.NUnit.Core.Mocking;
+﻿using WeatherService.Testing.Core.Fakes;
+using WeatherService.Testing.NUnit.Core.Customizations;
 
 namespace WeatherService.Testing.NUnit.Core.Specifications;
 
-public abstract class TestSpecification<TSubjectUnderTest> : TestSpecification
+[TestFixture]
+public abstract class TestSpecificationBase
 {
-    protected TSubjectUnderTest Sut { get; private set; }
+    protected static Fixture Fixture { get; }
 
-    [SetUp]
-    public override async Task SetUp()
+    static TestSpecificationBase()
     {
-        BaseSetUp();
-        await ArrangeAsync();
-        Sut = CreateSut();
-        await ActAsync();
-    }
-
-    protected virtual TSubjectUnderTest CreateSut()
-    {
-        return Scope.CreateSut<TSubjectUnderTest>();
+        Fixture = new Fixture().WithCustomizations();
     }
 }
 
 public abstract class TestSpecification : TestSpecificationBase
 {
-    protected IMockScope Scope { get; private set; }
-
-    [SetUp]
-    public virtual async Task SetUp()
+    [OneTimeSetUp]
+    public virtual async Task OneTimeSetUp()
     {
-        BaseSetUp();
         await ArrangeAsync();
         await ActAsync();
-    }
-
-    protected virtual void BaseSetUp()
-    {
-        //Scope = new MockScope();
     }
 
     protected virtual void Arrange()
@@ -61,19 +46,12 @@ public abstract class TestSpecification : TestSpecificationBase
     [TearDown]
     public async Task BaseTearDown()
     {
+        TearDownInternal();
         await TearDownAsync();
+    }
 
-        //if (TestContext.CurrentContext.Result.Outcome == ResultState.Success)
-        //{
-        //    Scope.Dispose();
-        //}
-        //else if (Scope.TryGetDependency<LoggerFake>(out var logger))
-        //{
-        //    foreach (var messageEntry in logger.Messages)
-        //    {
-        //        TestContext.WriteLine(messageEntry.Message);
-        //    }
-        //}
+    internal virtual void TearDownInternal()
+    {
     }
 
     protected virtual Task TearDownAsync()
@@ -84,5 +62,58 @@ public abstract class TestSpecification : TestSpecificationBase
 
     protected virtual void TearDown()
     {
+    }
+}
+
+public abstract class TestSpecification<TSubjectUnderTest> : TestSpecification
+{
+    protected TSubjectUnderTest Sut { get; private set; }
+
+    protected virtual object[] ExplicitDependencies { get; } = Array.Empty<object>();
+
+    private TestDependencies Dependencies { get; } = new();
+
+    [OneTimeSetUp]
+    public override async Task OneTimeSetUp()
+    {
+        RegisterDependencyBuilders();
+        CreateDependencies();
+        await ArrangeAsync();
+        Sut = CreateSut();
+        await ActAsync();
+    }
+
+    protected virtual void RegisterDependencyBuilders()
+    {
+        Dependencies.RegisterDependencyBuilders<AssemblyMarker>();
+    }
+
+    protected virtual void CreateDependencies()
+    {
+        Dependencies.CreateFor<TSubjectUnderTest>(ExplicitDependencies);
+    }
+
+    protected virtual TSubjectUnderTest CreateSut()
+    {
+        return (TSubjectUnderTest)Activator.CreateInstance(typeof(TSubjectUnderTest), Dependencies.ToArray())!;
+    }
+
+    public TDependency Dependency<TDependency>() where TDependency : class
+    {
+        if (!Dependencies.TryGet<TDependency>(out var dependency))
+            throw new TestSpecificationException($"No dependency of type {typeof(TDependency).Name} found");
+
+        return dependency;
+    }
+
+    internal override void TearDownInternal()
+    {
+        if (!Dependencies.TryGet<FakeLogger>(out var fakeLogger))
+            return;
+
+        foreach (var entry in fakeLogger.Messages)
+        {
+            TestContext.WriteLine(entry.Message);
+        }
     }
 }

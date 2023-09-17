@@ -3,9 +3,14 @@ using System.Text.Json;
 
 namespace WeatherService.Testing.NUnit.Core;
 
-public sealed class Build
+public class Build
 {
-    private static readonly Random Random = new();
+    private static Random Random = new();
+
+    public void WithSeed(int seed)
+    {
+        Random = new Random(seed);
+    }
 
     public static string String(int length = 20)
     {
@@ -113,8 +118,8 @@ public sealed class Build
     public static CancellationToken CancellationToken()
     {
         return new CancellationTokenSource().Token;
-    }  
-    
+    }
+
     public static CancellationToken CancellationToken(TimeSpan delay)
     {
         return new CancellationTokenSource((int)delay.TotalMilliseconds).Token;
@@ -131,7 +136,7 @@ public sealed class Build
     {
         return JsonSerializer.Serialize(value);
     }
-    
+
     public static T OneOf<T>(params T[] values)
     {
         return values[Random.Next(minValue: 0, values.Length)];

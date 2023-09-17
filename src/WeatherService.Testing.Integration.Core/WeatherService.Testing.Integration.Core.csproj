@@ -10,6 +10,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Bogus" Version="34.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
 		<PackageReference Include="NUnit" Version="3.13.3" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
@@ -22,15 +23,12 @@
 		<PackageReference Include="RichardSzalay.MockHttp" Version="6.0.0" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
 		<PackageReference Include="FluentMigrator" Version="3.3.2" />
+		<PackageReference Include="Docker.DotNet" Version="3.125.15" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\WeatherService.Testing.NUnit.Core\WeatherService.Testing.Core.csproj" />
 		<ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Features\GetCurrentWeatherTests\" />
 	</ItemGroup>
 
 	<ItemGroup>

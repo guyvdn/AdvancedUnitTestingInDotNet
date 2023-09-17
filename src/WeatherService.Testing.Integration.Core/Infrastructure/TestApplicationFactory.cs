@@ -12,7 +12,6 @@ using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
 using WeatherService.Core.DatabaseConfiguration.DbContexts;
-using WeatherService.Testing.NUnit.Core.DataBase;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
@@ -77,15 +76,9 @@ internal sealed class TestApplicationFactory : WebApplicationFactory<Api.Assembl
 
             services.AddDbContextFactory<WeatherApiDbContext>(o =>
             {
-                o.UseSqlServer(LocalDb.ConnectionString);
+                o.UseTestDatabaseContext();
                 EnableLogging(o, false);
             });
-
-            //services.AddDbContext<WeatherApiDbContext>(o =>
-            //{
-            //    o.UseSqlServer(LocalDb.ConnectionString);
-            //    EnableLogging(o, false);
-            //});
         });
     }
 

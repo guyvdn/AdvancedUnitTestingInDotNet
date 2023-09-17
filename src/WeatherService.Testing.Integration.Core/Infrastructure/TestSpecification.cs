@@ -3,9 +3,16 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
+using WeatherService.Testing.Integration.Core.Features.GetCurrentWeatherTests;
 using WeatherService.Testing.NUnit.Core.Specifications;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
+
+internal abstract partial class TestSpecification<TController, TRequest, TResponse>: TestSpecification
+    where TController : ControllerBase
+    where TRequest : IBaseRequest
+{
+}
 
 internal abstract partial class TestSpecification<TController, TRequest> : TestSpecification
     where TController : ControllerBase
@@ -55,6 +62,20 @@ internal abstract partial class TestSpecification : TestSpecificationBase, IDisp
             TestSink.PrintAllEvents();
             throw;
         }
+    }
+
+    protected async Task<TResponse> GetFromJsonAsync<TResponse>(string requestUri)
+    {
+        var response = await Client.GetAsync(requestUri);
+
+        if (!response.IsSuccessStatusCode)
+            Assert.Fail(
+                $"""
+                 Request failed with status code: {response.StatusCode}
+                 reason: {response.GetProblemDetails()}
+                 """);
+
+        return await response.FromJsonAsync<TResponse>();
     }
 
     private void SetupMocks()

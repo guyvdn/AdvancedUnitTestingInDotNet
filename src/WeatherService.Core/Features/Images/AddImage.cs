@@ -19,6 +19,17 @@ public static class AddImage
             RuleFor(x => x.ConditionCode).GreaterThan(0);
 
             RuleFor(x => x.Base64Content).NotEmpty();
+
+            RuleFor(x => x.Base64Content)
+                .Must(IsBase64String)
+                .When(x => !string.IsNullOrEmpty(x.Base64Content))
+                .WithMessage("The provided Base64Content is not valid");
+        }
+
+        private static bool IsBase64String(string base64)
+        {
+            var buffer = new Span<byte>(new byte[base64.Length]);
+            return Convert.TryFromBase64String(base64, buffer , out _);
         }
     }
 

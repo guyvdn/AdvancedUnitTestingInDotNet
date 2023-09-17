@@ -8,9 +8,8 @@ internal static class AuditLogMapper
     { 
         return new Representation.AuditLog
         {
-            AuditLogId = auditLog.AuditLogId,
             NameIdentifier = auditLog.NameIdentifier,
-            Message = "blah",//auditLog.Message.Value(),
+            Message = auditLog.Message,
             TimeStampUTC = auditLog.TimeStampUTC,
         };
     }

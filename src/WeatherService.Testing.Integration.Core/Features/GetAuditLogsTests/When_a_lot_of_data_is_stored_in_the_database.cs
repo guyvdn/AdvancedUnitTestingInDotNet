@@ -9,6 +9,7 @@ using WeatherService.Testing.NUnit.Core.DataBase;
 
 namespace WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
 
+[Explicit]
 [Category("LongRunning")]
 internal sealed class When_a_lot_of_data_is_stored_in_the_database
     : TestSpecification<AuditLogsController, GetAuditLogs.Request>

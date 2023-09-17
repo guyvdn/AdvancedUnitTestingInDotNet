@@ -40,8 +40,4 @@
 		<ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Features\AuditLogs\" />
-	</ItemGroup>
-
 </Project>

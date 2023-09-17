@@ -18,7 +18,7 @@ public static class TestSetup
             generic.Invoke(AssertionOptions.EquivalencyPlan, parameters: null);
         }
 
-        //AssertionOptions.AssertEquivalencyUsing(EquivalencyDefaults);
+        AssertionOptions.AssertEquivalencyUsing(EquivalencyDefaults);
     }
 
     private static EquivalencyAssertionOptions EquivalencyDefaults(EquivalencyAssertionOptions options)
@@ -56,7 +56,7 @@ public class AuditLogMessageToStringEquivalencyStep: EquivalencyStep<AuditLogMes
     protected override void Handle(AuditLogMessage subject, string expectation, IEquivalencyValidationContext context,
         IEquivalencyValidator nestedValidator)
     {
-        subject.Value().Should().BeEquivalentTo(expectation);
+        subject.ToString().Should().BeEquivalentTo(expectation);
     }
 }
 
@@ -65,6 +65,6 @@ public class StringToAuditLogMessageEquivalencyStep: EquivalencyStep<string, Aud
     protected override void Handle(string subject, AuditLogMessage expectation, IEquivalencyValidationContext context,
         IEquivalencyValidator nestedValidator)
     {
-        subject.Should().BeEquivalentTo(expectation.Value());
+        subject.Should().BeEquivalentTo(expectation.ToString());
     }
 }

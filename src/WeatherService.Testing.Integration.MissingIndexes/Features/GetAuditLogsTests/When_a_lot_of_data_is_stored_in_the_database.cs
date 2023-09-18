@@ -1,20 +1,16 @@
-﻿using System.Net.Http.Json;
-using WeatherService.Api.Features.AuditLogs;
-using WeatherService.Core.DatabaseConfiguration.DbContexts;
-using WeatherService.Core.Features.AuditLogs;
+﻿using WeatherService.Core.DatabaseConfiguration.DbContexts;
 using WeatherService.Representation;
 using WeatherService.Testing.Integration.Core;
 using WeatherService.Testing.Integration.Core.Infrastructure.Database;
 using WeatherService.Testing.Integration.Core.Specifications;
 using WeatherService.Testing.Integration.Seeding.Fakers;
-using WeatherService.Testing.Unit.Core;
 
 namespace WeatherService.Testing.Integration.Seeding.Features.GetAuditLogsTests;
 
 [Explicit("LongRunning")]
 [Category("LongRunning")]
 internal sealed class When_a_lot_of_data_is_stored_in_the_database
-    : TestSpecification<AuditLogsController, GetAuditLogs.Request>
+    : TestSpecification
 {
     private IEnumerable<AuditLog>? _response;
 

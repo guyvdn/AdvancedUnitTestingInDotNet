@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Subject Under Test", "0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10. Unit Testing Core", "10. Unit Testing Core", "{2039141E-F4F7-4D47-B6B7-B949AFF2499E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Unit.Core", "WeatherService.Testing.Core\WeatherService.Testing.Unit.Core.csproj", "{7C84697C-A46A-4DD4-947D-7BF799E59457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Unit.Core", "WeatherService.Testing.Unit.Core\WeatherService.Testing.Unit.Core.csproj", "{7C84697C-A46A-4DD4-947D-7BF799E59457}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Core", "WeatherService.Core\WeatherService.Core.csproj", "{F040E526-49A8-4DAE-8B48-31568DD9DCB1}"
 EndProject
@@ -23,11 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Migrations",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "60. Integration Testing EF Core Configuration", "60. Integration Testing EF Core Configuration", "{23B14940-C30D-4E51-9FC3-DC4FA1145329}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Integration.EfCoreConfig", "WeatherService.Testing.EfCoreConfig\WeatherService.Testing.Integration.EfCoreConfig.csproj", "{6D44D62A-1859-4252-B7F4-64513E418859}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Integration.EfCoreConfig", "WeatherService.Testing.Integration.EfCoreConfig\WeatherService.Testing.Integration.EfCoreConfig.csproj", "{6D44D62A-1859-4252-B7F4-64513E418859}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40. Unit Testing Controllers", "40. Unit Testing Controllers", "{5FD6D73B-78A3-4F5B-9FBC-91108623DE92}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Unit.Controllers", "WeatherService.Testing.Controllers\WeatherService.Testing.Unit.Controllers.csproj", "{40CF69E5-4D7B-4278-AF9C-29BB4972D728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Unit.Controllers", "WeatherService.Testing.Unit.Controllers\WeatherService.Testing.Unit.Controllers.csproj", "{40CF69E5-4D7B-4278-AF9C-29BB4972D728}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50. Integration Testing Core", "50. Integration Testing Core", "{FA8F4CDC-FA9B-41B5-A3A2-2E715D022F77}"
 EndProject
@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Integration.Seeding", "WeatherService.Testing.Integration.MissingIndexes\WeatherService.Testing.Integration.Seeding.csproj", "{FF97041A-9C6C-4D89-BECF-120A82C44050}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Unit.Features", "WeatherService.Testing.Features\WeatherService.Testing.Unit.Features.csproj", "{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Unit.Features", "WeatherService.Testing.Unit.Features\WeatherService.Testing.Unit.Features.csproj", "{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20. Unit Testing Features", "20. Unit Testing Features", "{4A193E8B-30C7-4F6C-9959-362A27E464E3}"
 EndProject

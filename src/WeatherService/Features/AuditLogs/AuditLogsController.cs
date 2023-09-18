@@ -15,6 +15,8 @@ public sealed class AuditLogsController : ControllerBase
     }
 
     [HttpGet(Name = "GetAuditLogs")]
+    [ProducesResponseType(typeof(ProblemDetails), Status400BadRequest)]
+    [ProducesResponseType(typeof(Representation.AuditLog), Status200OK)]
     public async Task<IActionResult> Get(int numberOfDays, CancellationToken cancellationToken) // TODO Representation
     {
         var request = new GetAuditLogs.Request

@@ -20,6 +20,9 @@ public sealed class ImagesController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpGet(Name = "GetImage")]
+    [ProducesResponseType(Status404NotFound)]
+    [ProducesResponseType(typeof(Image), Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), Status400BadRequest)]
     public async Task<IActionResult> Get(int conditionCode, CancellationToken cancellationToken)
     {
         var request = new GetImage.Request
@@ -54,6 +57,8 @@ public sealed class ImagesController : ControllerBase
     /// 
     /// </remarks>
     [HttpPost(Name = "AddImage")]
+    [ProducesResponseType(typeof(Image), Status201Created)]
+    [ProducesResponseType(typeof(ProblemDetails), Status400BadRequest)]
     public async Task<IActionResult> Add([FromBody] Image image, CancellationToken cancellationToken)
     {
         await _sender.Send(image.ToRequest(), cancellationToken);

@@ -105,9 +105,19 @@ public abstract partial class TestSpecification : TestSpecificationBase, IDispos
 
     protected abstract Task ActAsync();
 
-    public void Dispose()
+    protected virtual void Dispose(bool disposing)
     {
+        if (!disposing)
+            return;
+
+        HttpMessageHandler.Dispose();
         Factory.Dispose();
         Client.Dispose();
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }

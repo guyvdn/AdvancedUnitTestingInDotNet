@@ -2,17 +2,22 @@
 
 	<ItemGroup Label="Test Frameworks" Condition="$(MSBuildProjectName.StartsWith('WeatherService.Testing'))">
 		<PackageReference Include="AutoFixture" Version="4.18.0" />
+		<PackageReference Include="AutoFixture.AutoNSubstitute" Version="4.18.0" />
 		<PackageReference Include="AutoFixture.NUnit3" Version="4.18.0" />
 		<PackageReference Include="AutoFixture.SeedExtensions" Version="4.18.0" />
-		<PackageReference Include="AutoFixture.AutoNSubstitute" Version="4.18.0" />
 		<PackageReference Include="Bogus" Version="34.0.2" />
+		<PackageReference Include="Docker.DotNet" Version="3.125.15" />
 		<PackageReference Include="EfCore.SchemaCompare" Version="7.0.0" />
 		<PackageReference Include="FluentAssertions" Version="6.12.0" />
+		<PackageReference Include="FluentMigrator" Version="3.3.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
 		<PackageReference Include="NSubstitute" Version="5.1.0" />
 		<PackageReference Include="NUnit" Version="3.13.3" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
 		<PackageReference Include="RichardSzalay.MockHttp" Version="6.0.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
 	</ItemGroup>
 
 	<ItemGroup Label="Code Analyzers" Condition="$(MSBuildProjectName.StartsWith('WeatherService.Testing'))">
@@ -31,7 +36,7 @@
 	</ItemGroup>
 
 	<PropertyGroup Label="Warnings to ignore for test projects" Condition="$(MSBuildProjectName.StartsWith('WeatherService.Testing'))">
-		<NoWarn>$(NoWarn);CS8618;IDE0001</NoWarn>
+		<NoWarn>$(NoWarn);CS0618;CS8618;IDE0001</NoWarn>
 	</PropertyGroup>
 
 </Project>

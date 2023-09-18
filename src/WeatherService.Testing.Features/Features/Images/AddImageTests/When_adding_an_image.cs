@@ -1,10 +1,12 @@
 ﻿using WeatherService.Core.Features.Images;
 using WeatherService.Core.Services;
+using WeatherService.Testing.Core;
 using WeatherService.Testing.Core.Assertions;
 using WeatherService.Testing.Core.Fakes;
+using WeatherService.Testing.Core.Features.Images.AddImageTests;
 using WeatherService.Testing.Core.Specifications;
 
-namespace WeatherService.Testing.Core.Features.Images.AddImageTests;
+namespace WeatherService.Testing.Features.Features.Images.AddImageTests;
 
 internal sealed class When_adding_an_image : TestSpecification<AddImage.Handler>
 {

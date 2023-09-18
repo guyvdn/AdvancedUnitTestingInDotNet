@@ -2,7 +2,7 @@
 using WeatherService.Core.Features.AuditLogs;
 using WeatherService.Testing.Core.Specifications;
 
-namespace WeatherService.Testing.Core.Features.AuditLogs;
+namespace WeatherService.Testing.Features.Features.AuditLogs;
 
 internal sealed class When_validating_a_request : TestSpecification<GetAuditLogs.Validator>
 {
@@ -41,8 +41,8 @@ internal sealed class When_validating_a_request : TestSpecification<GetAuditLogs
         // Assert
         result.ShouldHaveValidationErrorFor(x => x.NumberOfDays)
             .WithErrorCode("GreaterThanValidator");
-    }    
-    
+    }
+
     [TestCase(8)]
     [TestCase(123)]
     [TestCase(int.MaxValue)]

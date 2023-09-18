@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Core", "WeatherService.Core\WeatherService.Core.csproj", "{F040E526-49A8-4DAE-8B48-31568DD9DCB1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99. Solution Items", "99. Solution Items", "{E1A6BFEE-4C2F-47B4-86EB-B74303465598}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90. Solution Items", "90. Solution Items", "{E1A6BFEE-4C2F-47B4-86EB-B74303465598}"
 	ProjectSection(SolutionItems) = preProject
 		Agenda.md = Agenda.md
 		Directory.Build.props = Directory.Build.props
@@ -21,27 +21,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99. Solution Items", "99. S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Migrations", "WeatherService.Migrations\WeatherService.Migrations.csproj", "{DF8934C7-06B5-4567-9EB5-0E6A79C345B3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "60. Unit Testing EF Core Configuration", "60. Unit Testing EF Core Configuration", "{23B14940-C30D-4E51-9FC3-DC4FA1145329}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "60. Integration Testing EF Core Configuration", "60. Integration Testing EF Core Configuration", "{23B14940-C30D-4E51-9FC3-DC4FA1145329}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.EfCoreConfig", "WeatherService.Testing.EfCoreConfig\WeatherService.Testing.EfCoreConfig.csproj", "{6D44D62A-1859-4252-B7F4-64513E418859}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90. Unit Testing Controllers", "90. Unit Testing Controllers", "{5FD6D73B-78A3-4F5B-9FBC-91108623DE92}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40. Unit Testing Controllers", "40. Unit Testing Controllers", "{5FD6D73B-78A3-4F5B-9FBC-91108623DE92}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Controllers", "WeatherService.Testing.Controllers\WeatherService.Testing.Controllers.csproj", "{40CF69E5-4D7B-4278-AF9C-29BB4972D728}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50. Integration Testing API", "50. Integration Testing API", "{FA8F4CDC-FA9B-41B5-A3A2-2E715D022F77}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50. Integration Testing Core", "50. Integration Testing Core", "{FA8F4CDC-FA9B-41B5-A3A2-2E715D022F77}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Integration.Core", "WeatherService.Testing.Integration.Core\WeatherService.Testing.Integration.Core.csproj", "{5C2FA5C3-4F6D-4400-8C14-223477820630}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Representation", "WeatherService.Representation\WeatherService.Representation.csproj", "{CAD94CF5-1C89-4302-80CF-BDAADBB21A07}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11. Unit Testing Service Registrations", "11. Unit Testing Service Registrations", "{A434D2CE-9A80-46F6-BAE2-124CD9E2B163}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30. Unit Testing Service Registrations", "30. Unit Testing Service Registrations", "{A434D2CE-9A80-46F6-BAE2-124CD9E2B163}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Testing.ServiceRegistrations", "WeatherService.Testing.ServiceRegistrations\WeatherService.Testing.ServiceRegistrations.csproj", "{D112CB86-7DE5-46D9-91E9-43732F31C3AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.ServiceRegistrations", "WeatherService.Testing.ServiceRegistrations\WeatherService.Testing.ServiceRegistrations.csproj", "{D112CB86-7DE5-46D9-91E9-43732F31C3AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Testing.Integration.Seeding", "WeatherService.Testing.Integration.MissingIndexes\WeatherService.Testing.Integration.Seeding.csproj", "{FF97041A-9C6C-4D89-BECF-120A82C44050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Integration.Seeding", "WeatherService.Testing.Integration.MissingIndexes\WeatherService.Testing.Integration.Seeding.csproj", "{FF97041A-9C6C-4D89-BECF-120A82C44050}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Testing.Features", "WeatherService.Testing.Features\WeatherService.Testing.Features.csproj", "{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Features", "WeatherService.Testing.Features\WeatherService.Testing.Features.csproj", "{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20. Unit Testing Features", "20. Unit Testing Features", "{4A193E8B-30C7-4F6C-9959-362A27E464E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "80. Integration Testing Seeding", "80. Integration Testing Seeding", "{80644C5A-6B71-4EDB-974C-20AD3F6D9265}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "70. Integration Testing Features", "70. Integration Testing Features", "{D428BAC5-9DE6-497F-B8CB-1131A45299E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Testing.Integration.Features", "WeatherService.Testing.Integration.Features\WeatherService.Testing.Integration.Features.csproj", "{08295E82-D08B-42FF-A568-6A645618F49E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +101,10 @@ Global
 		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08295E82-D08B-42FF-A568-6A645618F49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08295E82-D08B-42FF-A568-6A645618F49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08295E82-D08B-42FF-A568-6A645618F49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08295E82-D08B-42FF-A568-6A645618F49E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,8 +119,9 @@ Global
 		{5C2FA5C3-4F6D-4400-8C14-223477820630} = {FA8F4CDC-FA9B-41B5-A3A2-2E715D022F77}
 		{CAD94CF5-1C89-4302-80CF-BDAADBB21A07} = {3C961FB7-81D4-43CD-B058-46798E4EC034}
 		{D112CB86-7DE5-46D9-91E9-43732F31C3AD} = {A434D2CE-9A80-46F6-BAE2-124CD9E2B163}
-		{FF97041A-9C6C-4D89-BECF-120A82C44050} = {FA8F4CDC-FA9B-41B5-A3A2-2E715D022F77}
-		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B} = {2039141E-F4F7-4D47-B6B7-B949AFF2499E}
+		{FF97041A-9C6C-4D89-BECF-120A82C44050} = {80644C5A-6B71-4EDB-974C-20AD3F6D9265}
+		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B} = {4A193E8B-30C7-4F6C-9959-362A27E464E3}
+		{08295E82-D08B-42FF-A568-6A645618F49E} = {D428BAC5-9DE6-497F-B8CB-1131A45299E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {163361C8-A486-46EC-B655-20545165412C}

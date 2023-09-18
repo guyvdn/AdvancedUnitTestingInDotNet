@@ -2,9 +2,9 @@
 using WeatherService.Core.Features.AuditLogs.Models;
 using WeatherService.Testing.Core.Specifications;
 
-namespace WeatherService.Testing.Core.Features.AuditLogs;
+namespace WeatherService.Testing.Features.Features.AuditLogs;
 
-internal sealed class When_mapping_an_AuditLog: TestSpecificationBase
+internal sealed class When_mapping_an_AuditLog : TestSpecificationBase
 {
     [Test]
     public void It_should_map_correctly()
@@ -16,6 +16,7 @@ internal sealed class When_mapping_an_AuditLog: TestSpecificationBase
         var representation = entity.ToRepresentation();
 
         // Assert
-        representation.Should().BeEquivalentTo(entity);
+        representation.Should().BeEquivalentTo(entity, o => o.Excluding(x => x.AuditLogId));
+        entity.Should().BeEquivalentTo(representation);
     }
 }

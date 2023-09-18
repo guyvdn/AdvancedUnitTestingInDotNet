@@ -1,6 +1,6 @@
 ﻿using WeatherService.Testing.Core.Specifications;
 
-namespace WeatherService.Testing.Core;
+namespace WeatherService.Testing.Features;
 
 [SetUpFixture]
 public sealed class TestSetupFixture
@@ -8,6 +8,6 @@ public sealed class TestSetupFixture
     [OneTimeSetUp]
     public void RunBeforeAnyTests()
     {
-        TestSetup.Equivalency();
+        TestSetup.Equivalency<AssemblyMarker>();
     }
 }

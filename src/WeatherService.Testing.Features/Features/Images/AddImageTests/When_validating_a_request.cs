@@ -3,12 +3,12 @@ using WeatherService.Core.Features.Images;
 using WeatherService.Testing.Core;
 using WeatherService.Testing.Core.Specifications;
 
-namespace WeatherService.Testing.Features.Images.AddImageTests;
+namespace WeatherService.Testing.Features.Features.Images.AddImageTests;
 
 internal sealed class When_validating_a_request : TestSpecification<AddImage.Validator>
 {
     [TestCase("")]
-    [TestCase((string)null)]
+    [TestCase(null)]
     public void Should_have_error_when_Base64Content_is_null_or_empty(string? base64Content)
     {
         // Arrange

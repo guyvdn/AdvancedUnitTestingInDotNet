@@ -21,7 +21,8 @@
 + Fluent Validation Tests
 - Cancellation with timeout
 + Authentication test
-
+- AutoNSubstitute?
+- AutoFixture.NUnit3
 
 - Roles?
 - StringToFileNameEquivalencyStep?

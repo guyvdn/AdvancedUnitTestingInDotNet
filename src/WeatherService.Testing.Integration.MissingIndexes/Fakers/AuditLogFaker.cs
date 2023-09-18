@@ -1,8 +1,8 @@
 ﻿using WeatherService.Core.Features.AuditLogs.Models;
 
-namespace WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
+namespace WeatherService.Testing.Integration.Seeding.Fakers;
 
-internal sealed class AuditLogFaker : NlFaker<AuditLog>
+public sealed class AuditLogFaker : NlFaker<AuditLog>
 {
     public AuditLogFaker()
     {

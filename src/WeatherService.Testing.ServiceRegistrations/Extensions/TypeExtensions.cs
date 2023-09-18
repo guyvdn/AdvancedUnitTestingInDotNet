@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace WeatherService.Testing.Core;
+namespace WeatherService.Testing.ServiceRegistrations.Extensions;
 
 internal static class TypeExtensions
 {

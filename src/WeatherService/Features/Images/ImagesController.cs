@@ -58,6 +58,6 @@ public sealed class ImagesController : ControllerBase
     {
         await _sender.Send(image.ToRequest(), cancellationToken);
 
-        return CreatedAtAction(nameof(Get), image.ConditionCode);
+        return CreatedAtAction(nameof(Get), new { conditionCode = image.ConditionCode }, image);
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
 using FluentAssertions.Primitives;
 using Microsoft.AspNetCore.Http;
+using WeatherService.Representation;
 
 namespace WeatherService.Testing.Integration.Core;
 
@@ -68,5 +70,11 @@ public sealed class HttpContentAssertions : ReferenceTypeAssertions<HttpContent,
         result.Should().BeNull(string.Join(separator: ", ", result!.Errors.Keys));
 
         return new AndConstraint<HttpContentAssertions>(this);
+    }
+
+    public async Task BeEquivalentTo<TExpectation>(TExpectation expectation)
+    {
+        var content = await Subject.ReadFromJsonAsync<Image>();
+        content.Should().BeEquivalentTo(expectation);
     }
 }

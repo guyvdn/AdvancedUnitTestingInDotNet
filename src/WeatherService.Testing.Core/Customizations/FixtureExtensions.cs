@@ -1,6 +1,4 @@
-﻿using WeatherService.Core.Features.WeatherForecasts.Models;
-
-namespace WeatherService.Testing.Core.Customizations;
+﻿namespace WeatherService.Testing.Core.Customizations;
 
 internal static class FixtureExtensions
 {
@@ -10,17 +8,8 @@ internal static class FixtureExtensions
 
         fixture.Customize(new CurrentWeatherCustomization());
 
-        return fixture;
-    }
-}
+        fixture.Customizations.Add(new Base64StringCustomization());
 
-public class CurrentWeatherCustomization : ICustomization
-{
-    public void Customize(IFixture fixture)
-    {
-        // WeatherApi example return value: "2023-09-17 12:00"
-        fixture.Customize<CurrentWeather>(c =>
-            c.With(x => x.LastUpdated, Build.DateTime().ToString("yyyy-MM-dd hh:mm"))
-        );
+        return fixture;
     }
 }

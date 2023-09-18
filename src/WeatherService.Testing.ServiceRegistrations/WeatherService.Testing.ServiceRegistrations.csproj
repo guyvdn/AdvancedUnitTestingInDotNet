@@ -9,6 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
 		<PackageReference Include="coverlet.collector" Version="6.0.0">
 			<PrivateAssets>all</PrivateAssets>
@@ -17,9 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\WeatherService.Core\WeatherService.Core.csproj" />
-		<ProjectReference Include="..\WeatherService.Testing.Integration.Core\WeatherService.Testing.Integration.Core.csproj" />
-		<ProjectReference Include="..\WeatherService.Testing.Core\WeatherService.Testing.Core.csproj" />
+	  <ProjectReference Include="..\WeatherService.Core\WeatherService.Core.csproj" />
 	</ItemGroup>
 
 </Project>

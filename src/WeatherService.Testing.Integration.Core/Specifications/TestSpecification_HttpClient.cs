@@ -2,7 +2,7 @@
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
-internal abstract partial class TestSpecification
+public abstract partial class TestSpecification
 {
     protected MockHttpMessageHandler HttpMessageHandler = default!;
 

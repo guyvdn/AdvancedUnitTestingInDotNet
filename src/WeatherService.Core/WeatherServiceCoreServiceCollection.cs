@@ -7,7 +7,7 @@ using WeatherService.Core.Services;
 
 namespace WeatherService.Core;
 
-public static class ServiceCollectionExtensions
+public static class WeatherServiceCoreServiceCollection
 {
     public static void AddWeatherServiceCore(this IServiceCollection services, string connectionString, Action<WeatherApiOptions> weatherApiOptions)
     {

@@ -1,14 +1,16 @@
-﻿namespace WeatherService.Testing.Integration.Core;
+﻿using WeatherService.Testing.Integration.Core;
+using WeatherService.Testing.Integration.Core.Infrastructure.Database;
+
+namespace WeatherService.Testing.Integration.Seeding;
 
 [SetUpFixture]
-[SetCulture("nl")]
 public sealed class TestSetupFixture
 {
     [OneTimeSetUp]
     public async Task RunBeforeAnyTests()
     {
+        DatabaseContext.Current = new LocalDbContext();
         await DatabaseContext.Current.CreateAsync();
-        TestSetup.Equivalency();
     }
 
     [OneTimeTearDown]

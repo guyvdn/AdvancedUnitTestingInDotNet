@@ -6,8 +6,8 @@ namespace WeatherService.Testing.Core.Features.Images;
 
 internal sealed class AddImageValidatorTests: TestSpecification<AddImage.Validator>
 {
-    [TestCase((string)null)]
     [TestCase("")]
+    [TestCase((string)null)]
     public void Should_have_error_when_Base64Content_is_null_or_empty(string? base64Content)
     {
         // Arrange

@@ -1,21 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using WeatherService.Core;
+using WeatherService.Testing.ServiceRegistrations.Extensions;
 
-namespace WeatherService.Testing.Core;
-
-[TestFixture]
-public class ServiceCollectionExtensionsTest : ServiceCollectionExtensionsTestSpecification<WeatherService.Core.AssemblyMarker>
-{
-    protected override void AddServices(ServiceCollection services)
-    {
-        services.AddWeatherServiceCore("", _ => { });
-    }
-}
+namespace WeatherService.Testing.ServiceRegistrations.Specifications;
 
 [TestFixture]
-public abstract class ServiceCollectionExtensionsTestSpecification<TAssemblyMarker>
+public abstract class ServiceCollectionTestSpecification<TAssemblyMarker>
 {
     private ServiceCollection _services;
 

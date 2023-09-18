@@ -1,24 +1,25 @@
-﻿using MediatR;
+﻿using System.Net.Http.Json;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WeatherService.Testing.Core.Specifications;
-using WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
+using WeatherService.Testing.Integration.Core.Infrastructure.Database;
 using WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
-internal abstract partial class TestSpecification<TController, TRequest, TResponse> : TestSpecification
+public abstract partial class TestSpecification<TController, TRequest, TResponse> : TestSpecification
     where TController : ControllerBase
     where TRequest : IBaseRequest
 {
 }
 
-internal abstract partial class TestSpecification<TController, TRequest> : TestSpecification
+public abstract partial class TestSpecification<TController, TRequest> : TestSpecification
     where TController : ControllerBase
     where TRequest : IBaseRequest
 {
 }
 
-internal abstract partial class TestSpecification : TestSpecificationBase, IDisposable
+public abstract partial class TestSpecification : TestSpecificationBase, IDisposable
 {
     private readonly Dictionary<Type, object> _dependencies = new();
 
@@ -46,7 +47,7 @@ internal abstract partial class TestSpecification : TestSpecificationBase, IDisp
         TestSink = new TestSink();
         Factory = new TestApplicationFactory(GetAppSettings(), _dependencies, TestSink);
         Client = Factory.CreateAuthorizedClient();
-        Seed = new Seed(Client, Factory.Services);
+        Seed = new Seed(Factory.Services);
 
         await ArrangeAsync();
 
@@ -77,6 +78,19 @@ internal abstract partial class TestSpecification : TestSpecificationBase, IDisp
         return await response.FromJsonAsync<TResponse>();
     }
 
+    protected async Task<HttpResponseMessage> PostAsJsonAsync<TValue>(string uri, TValue value)
+    {
+        var response = await Client.PostAsJsonAsync(uri, value);
+
+        if (!response.IsSuccessStatusCode)
+            Assert.Fail(
+                $"""
+                 Request failed with status code: {response.StatusCode}
+                 reason: {response.GetProblemDetails()}
+                 """);
+
+        return response;
+    }
 
     protected virtual void Arrange()
     {

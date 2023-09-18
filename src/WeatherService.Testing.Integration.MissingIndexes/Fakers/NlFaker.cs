@@ -1,8 +1,8 @@
 ﻿using Bogus;
 
-namespace WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
+namespace WeatherService.Testing.Integration.Seeding.Fakers;
 
-internal class NlFaker<T> : Faker<T> where T : class
+public class NlFaker<T> : Faker<T> where T : class
 {
     protected NlFaker() : base("nl_BE")
     {

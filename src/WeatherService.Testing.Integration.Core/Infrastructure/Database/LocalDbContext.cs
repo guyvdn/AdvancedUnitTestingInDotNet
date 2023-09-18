@@ -6,7 +6,7 @@ public sealed class LocalDbContext : IDatabaseContext
 {
     private readonly LocalDb _localDb;
 
-    public LocalDbContext(string databaseName)
+    public LocalDbContext(string databaseName = "IntegrationTests")
     {
         _localDb = new LocalDb(databaseName);
     }

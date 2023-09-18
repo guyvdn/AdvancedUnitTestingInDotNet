@@ -17,7 +17,7 @@ using WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
-internal sealed class TestApplicationFactory : WebApplicationFactory<Api.AssemblyMarker>
+public sealed class TestApplicationFactory : WebApplicationFactory<Api.AssemblyMarker>
 {
     private readonly Dictionary<string, string?> _appSettings;
     private readonly Dictionary<Type, object> _dependencies;
@@ -85,7 +85,7 @@ internal sealed class TestApplicationFactory : WebApplicationFactory<Api.Assembl
 
             services.AddDbContextFactory<WeatherApiDbContext>(o =>
             {
-                o.UseTestDatabaseContext(TestSetupFixture.DatabaseContext);
+                o.UseTestDatabaseContext(DatabaseContext.Current);
                 EnableDbContextLogging(o);
             });
         });

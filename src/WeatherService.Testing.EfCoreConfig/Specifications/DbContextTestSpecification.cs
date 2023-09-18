@@ -3,7 +3,9 @@ using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using WeatherService.Testing.NUnit.Core.DataBase;
+using WeatherService.Core.Features.AuditLogs.Models;
+using WeatherService.Testing.Integration.Core;
+using WeatherService.Testing.Integration.Core.Infrastructure.Database;
 
 namespace WeatherService.Testing.EfCoreConfig.Specifications;
 
@@ -11,28 +13,27 @@ namespace WeatherService.Testing.EfCoreConfig.Specifications;
 internal abstract class DbContextTestSpecification<TDbContext, TMigrationsAssembly>
     where TDbContext : DbContext
 {
+    private readonly string _databaseName = "DbContextTest" + typeof(TDbContext).Name;
     private TDbContext _dbContext = default!;
+    private LocalDbContext _localDbContext = default!;
 
     [OneTimeSetUp]
-    protected void OneTimeSetUp()
+    protected async Task OneTimeSetUp()
     {
-        LocalDb.DatabaseName = "DbContextTest" + typeof(TDbContext).Name;
-        LocalDb.Create();
-        LocalDb.Migrate<TMigrationsAssembly>();
+        _localDbContext = new LocalDbContext(_databaseName);
+        await _localDbContext.CreateAsync();
 
         _dbContext = new ServiceCollection()
-            .AddDbContextFactory<TDbContext>(o => o.UseSqlServer(LocalDb.ConnectionString))
+            .AddDbContextFactory<TDbContext>(o => o.UseTestDatabaseContext(_localDbContext))
             .BuildServiceProvider()
             .GetRequiredService<TDbContext>();
     }
 
     [OneTimeTearDown]
-    protected void OneTimeTearDown()
+    protected async Task OneTimeTearDown()
     {
-        _dbContext?.Dispose();
-
-        LocalDb.Drop();
-        LocalDb.Stop();
+        await _dbContext.DisposeAsync();
+        await _localDbContext.DeleteAsync();
     }
 
     private static bool IsDbSet(System.Reflection.PropertyInfo property)
@@ -72,7 +73,7 @@ internal abstract class DbContextTestSpecification<TDbContext, TMigrationsAssemb
     }
 
     /// <summary>
-    /// Comment code in <see cref="Core.Features.AuditLogs.Models.AuditLogConfiguration"/> to see this test in action
+    /// Comment code in <see cref="AuditLogConfiguration"/> to see this test in action
     /// </summary>
     [Test]
     public void Configuration_should_match_sql_schema()
@@ -88,7 +89,7 @@ internal abstract class DbContextTestSpecification<TDbContext, TMigrationsAssemb
         var result = comparer.CompareEfWithDb(_dbContext);
 
 #if DEBUG
-        File.WriteAllText($"SchemaErrors_{LocalDb.DatabaseName}.txt", comparer.GetAllErrors);
+        File.WriteAllText($"SchemaErrors_{_databaseName}.txt", comparer.GetAllErrors);
 #endif
 
         result.Should().BeFalse(Environment.NewLine + comparer.GetAllErrors);

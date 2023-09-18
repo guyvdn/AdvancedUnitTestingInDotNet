@@ -1,0 +1,22 @@
+<Project>
+
+	<!--<ItemGroup Label="Code Analyzers" Condition="$(MSBuildProjectName.StartsWith('WeatherService.Testing'))">
+		<PackageReference Include="FluentAssertions.Analyzers" Version="0.24.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.16">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="NUnit.Analyzers" Version="3.6.1" >
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>-->
+
+	<PropertyGroup Label="Warnings to ignore for test projects" Condition="$(MSBuildProjectName.StartsWith('WeatherService.Testing'))">
+		<NoWarn>$(NoWarn);CS8618</NoWarn>
+	</PropertyGroup>
+
+</Project>

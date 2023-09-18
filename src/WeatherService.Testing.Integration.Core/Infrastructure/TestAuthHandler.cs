@@ -8,6 +8,8 @@ namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
 internal sealed class TestAuthHandler : AuthenticationHandler<TestAuthenticationSchemeOptions>
 {
+    public const string AuthenticationScheme = "TestScheme";
+
     public TestAuthHandler(
         IOptionsMonitor<TestAuthenticationSchemeOptions> options,
         ILoggerFactory logger,
@@ -29,7 +31,7 @@ internal sealed class TestAuthHandler : AuthenticationHandler<TestAuthentication
 
         var identity = new ClaimsIdentity(claims, authenticationType: "Test");
         var principal = new ClaimsPrincipal(identity);
-        var ticket = new AuthenticationTicket(principal, authenticationScheme: "TestScheme");
+        var ticket = new AuthenticationTicket(principal, authenticationScheme: AuthenticationScheme);
         var result = AuthenticateResult.Success(ticket);
 
         return Task.FromResult(result);

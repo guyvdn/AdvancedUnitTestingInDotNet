@@ -9,13 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Subject Under Test", "0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Unit Testing Core", "01. Unit Testing Core", "{2039141E-F4F7-4D47-B6B7-B949AFF2499E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Core", "WeatherService.Testing.NUnit.Core\WeatherService.Testing.Core.csproj", "{7C84697C-A46A-4DD4-947D-7BF799E59457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Core", "WeatherService.Testing.Core\WeatherService.Testing.Core.csproj", "{7C84697C-A46A-4DD4-947D-7BF799E59457}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Core", "WeatherService.Core\WeatherService.Core.csproj", "{F040E526-49A8-4DAE-8B48-31568DD9DCB1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Solution Items", "00. Solution Items", "{E1A6BFEE-4C2F-47B4-86EB-B74303465598}"
 	ProjectSection(SolutionItems) = preProject
 		Agenda.md = Agenda.md
+		Directory.Build.props = Directory.Build.props
 		RunMigrations.bat = RunMigrations.bat
 	EndProjectSection
 EndProject
@@ -33,7 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50. Integration Testing API
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Integration.Core", "WeatherService.Testing.Integration.Core\WeatherService.Testing.Integration.Core.csproj", "{5C2FA5C3-4F6D-4400-8C14-223477820630}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Representation", "WeatherService.Representation\WeatherService.Representation.csproj", "{CAD94CF5-1C89-4302-80CF-BDAADBB21A07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Representation", "WeatherService.Representation\WeatherService.Representation.csproj", "{CAD94CF5-1C89-4302-80CF-BDAADBB21A07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

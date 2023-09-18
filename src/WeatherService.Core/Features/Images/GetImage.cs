@@ -1,4 +1,5 @@
-﻿using OneOf;
+﻿using Microsoft.Extensions.Logging;
+using OneOf;
 using OneOf.Types;
 using WeatherService.Core.Services;
 
@@ -23,17 +24,25 @@ public static class GetImage
     {
         private readonly IFileNameService _fileNameService;
         private readonly IFileService _fileService;
+        private readonly ILogger<Handler> _logger;
 
-        public Handler(IFileNameService fileNameService, IFileService fileService)
+        public Handler(
+            IFileNameService fileNameService, 
+            IFileService fileService,
+            ILogger<Handler> logger)
         {
             _fileNameService = fileNameService;
             _fileService = fileService;
+            _logger = logger;
         }
 
         public async Task<OneOf<string, NotFound>> Handle(Request request, CancellationToken cancellationToken)
         {
             var fileName = _fileNameService.GetImageName(request.ConditionCode);
-            var bytes = await _fileService.LoadFileAsync(fileName, cancellationToken);
+
+            _logger.LogInformation("Getting image for {ConditionCode} with name {FileName}", request.ConditionCode,fileName);
+
+            var bytes = await _fileService.GetFileAsync(fileName, cancellationToken);
 
             return bytes.Match<OneOf<string, NotFound>>(
                 b => Convert.ToBase64String(b),

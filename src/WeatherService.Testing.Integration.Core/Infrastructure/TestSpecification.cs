@@ -1,14 +1,12 @@
-﻿using System.Net.Http.Headers;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NSubstitute;
+using WeatherService.Testing.Core.Specifications;
 using WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
-using WeatherService.Testing.Integration.Core.Features.GetCurrentWeatherTests;
-using WeatherService.Testing.NUnit.Core.Specifications;
+using WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
-internal abstract partial class TestSpecification<TController, TRequest, TResponse>: TestSpecification
+internal abstract partial class TestSpecification<TController, TRequest, TResponse> : TestSpecification
     where TController : ControllerBase
     where TRequest : IBaseRequest
 {
@@ -22,13 +20,15 @@ internal abstract partial class TestSpecification<TController, TRequest> : TestS
 
 internal abstract partial class TestSpecification : TestSpecificationBase, IDisposable
 {
-    private readonly Dictionary<Type, object> _mocks = new();
+    private readonly Dictionary<Type, object> _dependencies = new();
 
-    protected TestApplicationFactory Factory { get; private set; } = default!;
+    protected TestApplicationFactory Factory { get; private set; }
 
-    protected HttpClient Client { get; private set; } = default!;
+    protected HttpClient Client { get; private set; }
 
-    protected Seed Seed { get; private set; } = default!;
+    protected Seed Seed { get; private set; }
+
+    protected TestSink TestSink { get; private set; }
 
     /// <summary>
     /// Can be used to customize AppSettings before creating the TestApplicationFactory.
@@ -41,17 +41,16 @@ internal abstract partial class TestSpecification : TestSpecificationBase, IDisp
     [OneTimeSetUp]
     public virtual async Task OneTimeSetUp()
     {
-        Factory = new TestApplicationFactory(_mocks, GetAppSettings());
+        SetupDependencies();
 
-        SetupMocks();
-
-        Client = Factory.CreateClient();
-        Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "TestScheme");
+        TestSink = new TestSink();
+        Factory = new TestApplicationFactory(GetAppSettings(), _dependencies, TestSink);
+        Client = Factory.CreateAuthorizedClient();
         Seed = new Seed(Client, Factory.Services);
 
         await ArrangeAsync();
 
-        //ResetMocks();
+        ResetDependencies();
 
         try
         {
@@ -78,23 +77,6 @@ internal abstract partial class TestSpecification : TestSpecificationBase, IDisp
         return await response.FromJsonAsync<TResponse>();
     }
 
-    private void SetupMocks()
-    {
-        MockHttpClient();
-    }
-
-    private T AddMock<T>()
-        where T : class
-    {
-        var mock = Substitute.For<T>();
-        AddMock<T>(mock);
-        return mock;
-    }
-
-    private void AddMock<T>(T mock)
-    {
-        _mocks.Add(typeof(T), mock!);
-    }
 
     protected virtual void Arrange()
     {

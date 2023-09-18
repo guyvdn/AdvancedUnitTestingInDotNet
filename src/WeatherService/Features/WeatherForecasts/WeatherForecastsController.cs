@@ -7,11 +7,6 @@ namespace WeatherService.Api.Features.WeatherForecast;
 [Route("[controller]")]
 public sealed class WeatherForecastsController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-    
     private readonly ISender _sender;
 
     public WeatherForecastsController(ISender sender)

@@ -41,8 +41,8 @@ internal static class SwaggerConfiguration
                         Reference = new OpenApiReference()
                         {
                             Type = new ReferenceType?(ReferenceType.SecurityScheme),
-                            Id = "oauth2"
-                        }
+                            Id = "oauth2",
+                        },
                     },
                     Array.Empty<string>()
                 }

@@ -9,7 +9,7 @@ internal abstract partial class TestSpecification
     private void MockHttpClient()
     {
         HttpMessageHandler = new MockHttpMessageHandler();
-        AddMock<IHttpClientFactory>(new MockHttpClientFactory(HttpMessageHandler));
+        AddDependency<IHttpClientFactory>(new MockHttpClientFactory(HttpMessageHandler));
     }
 
     [Test]

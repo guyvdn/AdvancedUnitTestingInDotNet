@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -12,18 +13,24 @@ using Microsoft.Extensions.Options;
 using Serilog;
 using Serilog.Events;
 using WeatherService.Core.DatabaseConfiguration.DbContexts;
+using WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
 internal sealed class TestApplicationFactory : WebApplicationFactory<Api.AssemblyMarker>
 {
     private readonly Dictionary<string, string?> _appSettings;
-    private readonly Dictionary<Type, object> _mocks;
+    private readonly Dictionary<Type, object> _dependencies;
+    private readonly TestSink _testSink;
 
-    public TestApplicationFactory(Dictionary<Type, object> mocks, Dictionary<string, string?> appSettings)
+    public TestApplicationFactory(
+        Dictionary<string, string?> appSettings,
+        Dictionary<Type, object> dependencies,
+        TestSink testSink)
     {
         _appSettings = appSettings;
-        _mocks = mocks;
+        _dependencies = dependencies;
+        _testSink = testSink;
     }
 
     public bool RequestIsAuthenticated { get; set; } = true;
@@ -46,9 +53,9 @@ internal sealed class TestApplicationFactory : WebApplicationFactory<Api.Assembl
         builder.UseSerilog((_, loggerConfiguration) =>
         {
             loggerConfiguration
-                .WriteTo.Sink<TestSink>()
+                .WriteTo.Sink(_testSink)
                 .MinimumLevel.Verbose()
-                .MinimumLevel.Override(source: "Microsoft", LogEventLevel.Warning);
+                .MinimumLevel.Override(source: "Microsoft", LogEventLevel.Error);
         });
 
         builder.ConfigureTestServices(services =>
@@ -57,14 +64,16 @@ internal sealed class TestApplicationFactory : WebApplicationFactory<Api.Assembl
             services.RemoveAll<IConfigureOptions<AuthenticationOptions>>();
 
             services
-                .AddAuthentication(defaultScheme: "TestScheme")
-                .AddScheme<TestAuthenticationSchemeOptions, TestAuthHandler>(authenticationScheme: "TestScheme", o =>
-                {
-                    o.RequestIsAuthenticated = RequestIsAuthenticated;
-                    o.UserName = UserName;
-                });
+                .AddAuthentication(defaultScheme: TestAuthHandler.AuthenticationScheme)
+                .AddScheme<TestAuthenticationSchemeOptions, TestAuthHandler>(
+                    authenticationScheme: TestAuthHandler.AuthenticationScheme,
+                    o =>
+                    {
+                        o.RequestIsAuthenticated = RequestIsAuthenticated;
+                        o.UserName = UserName;
+                    });
 
-            foreach (var mock in _mocks)
+            foreach (var mock in _dependencies)
             {
                 services.AddSingleton(mock.Key, _ => mock.Value);
             }
@@ -76,18 +85,24 @@ internal sealed class TestApplicationFactory : WebApplicationFactory<Api.Assembl
 
             services.AddDbContextFactory<WeatherApiDbContext>(o =>
             {
-                o.UseTestDatabaseContext();
-                EnableLogging(o, false);
+                o.UseTestDatabaseContext(TestSetupFixture.DatabaseContext);
+                EnableDbContextLogging(o);
             });
         });
     }
 
-    private static void EnableLogging(DbContextOptionsBuilder o, bool enable)
+    public HttpClient CreateAuthorizedClient()
     {
-        if (!enable)
-            return;
+        var client = CreateClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: TestAuthHandler.AuthenticationScheme);
+        return client;
+    }
 
+    private static void EnableDbContextLogging(DbContextOptionsBuilder o)
+    {
+#if DEBUG
         o.LogTo(TestContext.WriteLine, LogLevel.Trace);
         o.EnableSensitiveDataLogging();
+#endif
     }
 }

@@ -5,11 +5,11 @@ using WeatherService.Core.DatabaseConfiguration.DbContexts;
 using WeatherService.Core.Features.AuditLogs;
 using WeatherService.Core.Features.AuditLogs.Models;
 using WeatherService.Testing.Integration.Core.Infrastructure;
-using WeatherService.Testing.NUnit.Core.DataBase;
+using WeatherService.Testing.Integration.Core.Infrastructure.Database;
 
 namespace WeatherService.Testing.Integration.Core.Features.GetAuditLogsTests;
 
-[Explicit]
+[Explicit("Does not work on InMemoryDatabase")]
 [Category("LongRunning")]
 internal sealed class When_a_lot_of_data_is_stored_in_the_database
     : TestSpecification<AuditLogsController, GetAuditLogs.Request>
@@ -46,8 +46,8 @@ internal sealed class When_a_lot_of_data_is_stored_in_the_database
     {
         const int CommunityMessage = 1;
         
-        var result = LocalDb
-            .ExecuteReader("EXEC [dbo].[sp_BlitzIndex] @ThresholdMB = 1, @Mode = 3")
+        var result = SqlHelper
+            .ExecuteReader("EXEC [dbo].[sp_BlitzIndex] @ThresholdMB = 1, @Mode = 3", TestSetupFixture.DatabaseContext.ConnectionString)
             .Skip(CommunityMessage);
 
         result.Should().BeEmpty();

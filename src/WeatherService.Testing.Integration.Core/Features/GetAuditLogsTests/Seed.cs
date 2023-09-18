@@ -25,6 +25,7 @@ internal sealed class Seed
         return await createResponse.Content.ReadFromJsonAsync<TResult>();
     }
 
+    // TODO dubbel?
     private static async Task EnsureSuccessStatus(HttpResponseMessage putResponse)
     {
         if (putResponse.StatusCode == HttpStatusCode.BadRequest)

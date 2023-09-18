@@ -1,29 +1,29 @@
-﻿using System.Net;
-using System.Net.Http.Json;
-using System.Text.Json;
-using Microsoft.AspNetCore.Http;
+﻿using System.Net.Http.Json;
 using RichardSzalay.MockHttp;
 using WeatherService.Api.Features.WeatherForecast;
 using WeatherService.Core.Features.WeatherForecasts;
 using WeatherService.Core.Features.WeatherForecasts.Models;
 using WeatherService.Representation;
 using WeatherService.Testing.Integration.Core.Infrastructure;
+using WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
 namespace WeatherService.Testing.Integration.Core.Features.GetCurrentWeatherTests;
 
-internal sealed class When_all_is_good : TestSpecification<WeatherForecastsController, GetCurrentWeather.Request, WeatherForecast>
+internal sealed class When_all_is_good
+    : TestSpecification<WeatherForecastsController, GetCurrentWeather.Request, WeatherForecast>
 {
-    private WeatherForecast? _response;
+    private WeatherForecast _response;
+    private WeatherResponse _weather;
 
     protected override void Arrange()
     {
-        var response = Fixture.Build<WeatherResponse>();
+        _weather = Fixture.Create<WeatherResponse>();
 
         HttpMessageHandler
             .Expect("https://weatherapi/v1/current.json")
             .WithQueryString("key", "ApiKey")
             .WithQueryString("q", "Belgium")
-            .Respond(JsonContent.Create(response));
+            .Respond(JsonContent.Create(_weather));
     }
 
     protected override async Task ActAsync()
@@ -35,29 +35,23 @@ internal sealed class When_all_is_good : TestSpecification<WeatherForecastsContr
     public void It_should_return_the_correct_response()
     {
         _response.Should().NotBeNull();
-    }
-}
-
-
-internal static class HttpResponseMessageExtensions
-{
-    public static async Task<T> FromJsonAsync<T>(this HttpResponseMessage message)
-    {
-        var responseContent = await message.Content.ReadAsStringAsync();
-        var response = responseContent.Deserialize<T>();
-        response.Should().NotBeNull();
-        return response!;
+        _response!.TemperatureC.Should().Be(_weather.Current.TemperatureC);
     }
 
-    public static string GetProblemDetails(this HttpResponseMessage message)
+    [Test]
+    public async Task It_should_have_created_an_audit_log()
     {
-        if (message.StatusCode != HttpStatusCode.BadRequest)
-            return message.ReasonPhrase ?? @"¯\_(ツ)_/¯";
+        var auditLogs = await GetFromJsonAsync<IEnumerable<AuditLog>>("AuditLogs?numberOfDays=1");
 
-        var problemdetails = JsonSerializer.Deserialize<HttpValidationProblemDetails>(message.Content.ReadAsStream());
-        if (problemdetails is null)
-            return @"¯\_(ツ)_/¯";
+        var latestLog = auditLogs.OrderByDescending(x => x.TimeStampUTC).First();
+        latestLog.TimeStampUTC.Should().BeCloseTo(DateTime.UtcNow, TestPrecision.DateTimeCloseTo);
+        latestLog.Message.Should().Be("Get current weather was called for city 'Mechelen'");
+        latestLog.NameIdentifier.Should().Be(Factory.UserName);
+    }
 
-        return string.Join(", ", problemdetails.Errors.SelectMany(x => x.Value));
+    [Test]
+    public void It_should_log_the_expected_messages()
+    {
+        TestSink.Should().Log("{User} is requesting weather for {City}");
     }
 }

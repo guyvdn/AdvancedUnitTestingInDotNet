@@ -1,5 +1,5 @@
 ﻿using FluentMigrator;
-using WeatherService.Testing.NUnit.Core.Specifications;
+using WeatherService.Testing.Core.Specifications;
 
 namespace WeatherService.Testing.Integration.Core;
 

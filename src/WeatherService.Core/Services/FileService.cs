@@ -7,7 +7,7 @@ public interface IFileService
 {
     public Task SaveFileAsync(string path, byte[] bytes, CancellationToken cancellationToken);
 
-    public Task<OneOf<byte[], NotFound>> LoadFileAsync(string path, CancellationToken cancellationToken);
+    public Task<OneOf<byte[], NotFound>> GetFileAsync(string path, CancellationToken cancellationToken);
 }
 
 internal sealed class FileService : IFileService
@@ -22,7 +22,7 @@ internal sealed class FileService : IFileService
             await File.WriteAllBytesAsync(path, bytes, cancellationToken);
     }
 
-    public async Task<OneOf<byte[], NotFound>> LoadFileAsync(string path, CancellationToken cancellationToken)
+    public async Task<OneOf<byte[], NotFound>> GetFileAsync(string path, CancellationToken cancellationToken)
     {
         if (File.Exists(path))
             return await File.ReadAllBytesAsync(path ,cancellationToken);

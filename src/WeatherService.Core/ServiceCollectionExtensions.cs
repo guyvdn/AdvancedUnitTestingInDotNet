@@ -33,7 +33,7 @@ public static class ServiceCollectionExtensions
 
         services.AddValidatorsFromAssemblyContaining<AssemblyMarker>(includeInternalTypes: true);
 
-        services.TryAddSingleton<IFileService, FileService>();
         services.TryAddSingleton<IFileNameService, FileNameService>();
+        services.TryAddSingleton<IFileService, FileService>();
     }
 }

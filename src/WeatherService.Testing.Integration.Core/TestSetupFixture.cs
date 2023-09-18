@@ -1,19 +1,25 @@
-﻿namespace WeatherService.Testing.Integration.Core;
+﻿using WeatherService.Testing.Integration.Core.Infrastructure.Database;
+
+namespace WeatherService.Testing.Integration.Core;
 
 [SetUpFixture]
 [SetCulture("nl")]
 public sealed class TestSetupFixture
 {
+    public static IDatabaseContext DatabaseContext { get; } = new InMemoryDbContext();
+    //public static IDatabaseContext DatabaseContext { get; } = new LocalDbContext();
+    //public static IDatabaseContext DatabaseContext { get; } = new SqlDockerDbContext();
+
     [OneTimeSetUp]
-    public void RunBeforeAnyTests()
+    public async Task RunBeforeAnyTests()
     {
-        TestDatabaseContext.Create();
+        await DatabaseContext.CreateAsync();
         TestSetup.Equivalency();
     }
 
     [OneTimeTearDown]
-    public void RunAfterAllTestsHaveCompleted()
+    public async Task RunAfterAllTestsHaveCompleted()
     {
-        TestDatabaseContext.Delete();
+        await DatabaseContext.DeleteAsync();
     }
 }

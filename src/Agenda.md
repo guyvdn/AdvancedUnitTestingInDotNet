@@ -6,26 +6,33 @@
 - Controller tests
 - Dependency injection tests
 - Autofixture configuration
-- Build class
-- HttpClient mocking
++ Build class
++ HttpClient mocking
 - ILogger mocking
-- Fluent assertions extensions (http, ...)
-- NSubstitute Extensions
-- API Tests
-- DB setup
-- TestPrecision
++ Fluent assertions extensions (http, ...)
++ NSubstitute Extensions
++ API Tests
++ DB setup
++ TestPrecision
 - Analyzers
 - CancellationToken
 - SQL Test column types?
 - Test the tests
-- Fluent Validation Tests
++ Fluent Validation Tests
 - Cancellation with timeout
++ Authentication test
+
 
 - Roles?
 - StringToFileNameEquivalencyStep?
 - SetPropertyValue.
 
 --------------------
+
+Pre requisits
+
+- Make sure Docker Desktop is running
+
 
 Agenda
 

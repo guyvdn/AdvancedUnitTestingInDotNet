@@ -4,7 +4,7 @@ using WeatherService.Testing.Core.Specifications;
 
 namespace WeatherService.Testing.Core.Features.AuditLogs;
 
-internal sealed class AuditLogMapperTests: TestSpecificationBase
+internal sealed class When_mapping_an_AuditLog: TestSpecificationBase
 {
     [Test]
     public void It_should_map_correctly()

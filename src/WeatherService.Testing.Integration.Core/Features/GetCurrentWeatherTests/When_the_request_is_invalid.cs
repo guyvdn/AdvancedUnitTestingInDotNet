@@ -20,6 +20,12 @@ internal sealed class When_the_request_is_invalid
     {
         _response.Content
             .Should().HaveProblemDetails()
-            .And.ContainError(key: "city");
+            .And.ContainError(key: "City");
+    }
+
+    [Test]
+    public void It_should_log_the_expected_messages()
+    {
+        TestSink.Should().Log("Error validating {Request} with {Failures}");
     }
 }

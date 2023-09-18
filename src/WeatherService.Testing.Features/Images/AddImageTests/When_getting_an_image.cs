@@ -2,6 +2,7 @@
 using OneOf.Types;
 using WeatherService.Core.Features.Images;
 using WeatherService.Core.Services;
+using WeatherService.Testing.Core.Assertions;
 using WeatherService.Testing.Core.Fakes;
 using WeatherService.Testing.Core.Specifications;
 

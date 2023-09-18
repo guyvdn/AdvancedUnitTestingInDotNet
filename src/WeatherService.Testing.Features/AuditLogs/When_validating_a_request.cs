@@ -4,7 +4,7 @@ using WeatherService.Testing.Core.Specifications;
 
 namespace WeatherService.Testing.Core.Features.AuditLogs;
 
-internal sealed class GetAuditLogsValidatorTests : TestSpecification<GetAuditLogs.Validator>
+internal sealed class When_validating_a_request : TestSpecification<GetAuditLogs.Validator>
 {
     [TestCase(1)]
     [TestCase(4)]

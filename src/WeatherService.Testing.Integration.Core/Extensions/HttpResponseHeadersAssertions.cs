@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using FluentAssertions.Primitives;
 
-namespace WeatherService.Testing.Integration.Core.Features.ImageTests;
+namespace WeatherService.Testing.Integration.Core.Extensions;
 
 internal static class HttpResponseHeadersExtensions
 {

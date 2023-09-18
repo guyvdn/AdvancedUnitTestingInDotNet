@@ -4,6 +4,14 @@ using OneOf.Types;
 
 namespace WeatherService.Testing.Core.Features.Images.AddImageTests;
 
+public static class OneOfAssertionsExtensions
+{
+    public static OneOfAssertions<TOneOf> Should<TOneOf>(this TOneOf oneOf) where TOneOf : struct, IOneOf
+    {
+        return new OneOfAssertions<TOneOf>(oneOf);
+    }
+}
+
 public class OneOfAssertions<TOneOf> : ReferenceTypeAssertions<TOneOf, OneOfAssertions<TOneOf>> where TOneOf : struct, IOneOf
 {
     protected override string Identifier => nameof(OneOf);

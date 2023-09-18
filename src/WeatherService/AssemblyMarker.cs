@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("WeatherService.Testing.Core")]
+[assembly: InternalsVisibleTo("WeatherService.Testing.Features")]
 [assembly: InternalsVisibleTo("WeatherService.Testing.Controllers")]
 [assembly: InternalsVisibleTo("WeatherService.Testing.Integration.Core")]
 

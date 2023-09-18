@@ -15,7 +15,7 @@ public sealed class WeatherForecastsController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    public async Task<Representation.WeatherForecast> Get(string city, CancellationToken cancellationToken)
+    public async Task<Representation.WeatherForecast> Get(string city = "", CancellationToken cancellationToken = default)
     {
         var request = new GetCurrentWeather.Request
         {

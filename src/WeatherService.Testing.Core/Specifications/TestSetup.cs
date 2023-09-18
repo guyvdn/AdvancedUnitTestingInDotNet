@@ -51,7 +51,7 @@ public abstract class EquivalencyStep<TSubject, TExpectation> : IEquivalencyStep
     protected abstract void Handle(TSubject subject, TExpectation expectation, IEquivalencyValidationContext context, IEquivalencyValidator nestedValidator);
 }
 
-public class AuditLogMessageToStringEquivalencyStep: EquivalencyStep<AuditLogMessage, string>
+public class AuditLogMessageToStringEquivalencyStep : EquivalencyStep<AuditLogMessage, string>
 {
     protected override void Handle(AuditLogMessage subject, string expectation, IEquivalencyValidationContext context,
         IEquivalencyValidator nestedValidator)
@@ -60,7 +60,7 @@ public class AuditLogMessageToStringEquivalencyStep: EquivalencyStep<AuditLogMes
     }
 }
 
-public class StringToAuditLogMessageEquivalencyStep: EquivalencyStep<string, AuditLogMessage>
+public class StringToAuditLogMessageEquivalencyStep : EquivalencyStep<string, AuditLogMessage>
 {
     protected override void Handle(string subject, AuditLogMessage expectation, IEquivalencyValidationContext context,
         IEquivalencyValidator nestedValidator)

@@ -2,18 +2,18 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WeatherService.Testing.Core.Specifications;
+using WeatherService.Testing.Integration.Core.Extensions;
 using WeatherService.Testing.Integration.Core.Infrastructure.Database;
-using WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
-public abstract partial class TestSpecification<TController, TRequest, TResponse> : TestSpecification
+public abstract class TestSpecification<TController, TRequest, TResponse> : TestSpecification
     where TController : ControllerBase
     where TRequest : IBaseRequest
 {
 }
 
-public abstract partial class TestSpecification<TController, TRequest> : TestSpecification
+public abstract class TestSpecification<TController, TRequest> : TestSpecification
     where TController : ControllerBase
     where TRequest : IBaseRequest
 {

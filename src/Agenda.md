@@ -28,6 +28,9 @@
 - StringToFileNameEquivalencyStep?
 - SetPropertyValue.
 
+EquivalencySteps (AuditLogMessageToStringEquivalencyStep)
+
+
 --------------------
 
 Pre requisits

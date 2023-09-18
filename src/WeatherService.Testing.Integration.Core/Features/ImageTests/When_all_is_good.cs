@@ -2,6 +2,7 @@
 using WeatherService.Api.Features.Images;
 using WeatherService.Core.Features.Images;
 using WeatherService.Representation;
+using WeatherService.Testing.Integration.Core.Extensions;
 using WeatherService.Testing.Integration.Core.Infrastructure;
 
 namespace WeatherService.Testing.Integration.Core.Features.ImageTests;

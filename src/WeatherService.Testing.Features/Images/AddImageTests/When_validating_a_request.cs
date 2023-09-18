@@ -1,10 +1,11 @@
 ﻿using FluentValidation.TestHelper;
 using WeatherService.Core.Features.Images;
+using WeatherService.Testing.Core;
 using WeatherService.Testing.Core.Specifications;
 
-namespace WeatherService.Testing.Core.Features.Images;
+namespace WeatherService.Testing.Features.Images.AddImageTests;
 
-internal sealed class AddImageValidatorTests: TestSpecification<AddImage.Validator>
+internal sealed class When_validating_a_request : TestSpecification<AddImage.Validator>
 {
     [TestCase("")]
     [TestCase((string)null)]

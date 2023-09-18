@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Api", "Weath
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Subject Under Test", "00. Subject Under Test", "{3C961FB7-81D4-43CD-B058-46798E4EC034}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Unit Testing Core", "01. Unit Testing Core", "{2039141E-F4F7-4D47-B6B7-B949AFF2499E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10. Unit Testing Core", "10. Unit Testing Core", "{2039141E-F4F7-4D47-B6B7-B949AFF2499E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Core", "WeatherService.Testing.Core\WeatherService.Testing.Core.csproj", "{7C84697C-A46A-4DD4-947D-7BF799E59457}"
 EndProject
@@ -40,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Testing.ServiceRegistrations", "WeatherService.Testing.ServiceRegistrations\WeatherService.Testing.ServiceRegistrations.csproj", "{D112CB86-7DE5-46D9-91E9-43732F31C3AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Testing.Integration.Seeding", "WeatherService.Testing.Integration.MissingIndexes\WeatherService.Testing.Integration.Seeding.csproj", "{FF97041A-9C6C-4D89-BECF-120A82C44050}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Testing.Features", "WeatherService.Testing.Features\WeatherService.Testing.Features.csproj", "{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{FF97041A-9C6C-4D89-BECF-120A82C44050}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF97041A-9C6C-4D89-BECF-120A82C44050}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF97041A-9C6C-4D89-BECF-120A82C44050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{CAD94CF5-1C89-4302-80CF-BDAADBB21A07} = {3C961FB7-81D4-43CD-B058-46798E4EC034}
 		{D112CB86-7DE5-46D9-91E9-43732F31C3AD} = {A434D2CE-9A80-46F6-BAE2-124CD9E2B163}
 		{FF97041A-9C6C-4D89-BECF-120A82C44050} = {FA8F4CDC-FA9B-41B5-A3A2-2E715D022F77}
+		{66561488-A8D7-421F-9E78-6FB1AF6E6E5B} = {2039141E-F4F7-4D47-B6B7-B949AFF2499E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {163361C8-A486-46EC-B655-20545165412C}

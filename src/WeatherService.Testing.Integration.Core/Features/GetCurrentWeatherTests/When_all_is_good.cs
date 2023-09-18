@@ -5,7 +5,6 @@ using WeatherService.Core.Features.WeatherForecasts;
 using WeatherService.Core.Features.WeatherForecasts.Models;
 using WeatherService.Representation;
 using WeatherService.Testing.Integration.Core.Infrastructure;
-using WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
 namespace WeatherService.Testing.Integration.Core.Features.GetCurrentWeatherTests;
 

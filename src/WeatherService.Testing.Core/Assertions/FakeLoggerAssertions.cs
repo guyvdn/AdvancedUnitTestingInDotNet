@@ -1,7 +1,16 @@
 ﻿using FluentAssertions.Primitives;
 using Microsoft.Extensions.Logging;
+using WeatherService.Testing.Core.Fakes;
 
-namespace WeatherService.Testing.Core.Fakes;
+namespace WeatherService.Testing.Core.Assertions;
+
+public static class FakeLoggerAssertionsExtensions
+{
+    public static FakeLoggerAssertions Should(this FakeLogger fakeLogger)
+    {
+        return new FakeLoggerAssertions(fakeLogger);
+    }
+}
 
 public sealed class FakeLoggerAssertions : ReferenceTypeAssertions<FakeLogger, FakeLoggerAssertions>
 {
@@ -25,8 +34,8 @@ public sealed class FakeLoggerAssertions : ReferenceTypeAssertions<FakeLogger, F
     public AndConstraint<FakeLoggerAssertions> LogInformation(string message)
     {
         return Log(LogLevel.Information, message);
-    }   
-    
+    }
+
     public AndConstraint<FakeLoggerAssertions> LogError(string message)
     {
         return Log(LogLevel.Error, message);
@@ -35,13 +44,5 @@ public sealed class FakeLoggerAssertions : ReferenceTypeAssertions<FakeLogger, F
     public void LogNoOtherMessages()
     {
         Subject.Messages.Should().HaveCount(_assertedCount);
-    }
-}
-
-public static class FakeLoggerAssertionsExtensions
-{
-    public static FakeLoggerAssertions Should(this FakeLogger fakeLogger)
-    {
-        return new FakeLoggerAssertions(fakeLogger);
     }
 }

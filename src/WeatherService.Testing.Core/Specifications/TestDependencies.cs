@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace WeatherService.Testing.Core.Specifications;
+namespace WeatherService.Testing.Unit.Core.Specifications;
 
 public sealed class TestDependencies : IEnumerable<object>
 {

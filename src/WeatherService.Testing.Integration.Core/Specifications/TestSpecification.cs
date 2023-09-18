@@ -1,11 +1,12 @@
 ﻿using System.Net.Http.Json;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using WeatherService.Testing.Core.Specifications;
 using WeatherService.Testing.Integration.Core.Extensions;
+using WeatherService.Testing.Integration.Core.Infrastructure;
 using WeatherService.Testing.Integration.Core.Infrastructure.Database;
+using WeatherService.Testing.Unit.Core.Specifications;
 
-namespace WeatherService.Testing.Integration.Core.Infrastructure;
+namespace WeatherService.Testing.Integration.Core.Specifications;
 
 public abstract class TestSpecification<TController, TRequest, TResponse> : TestSpecification
     where TController : ControllerBase

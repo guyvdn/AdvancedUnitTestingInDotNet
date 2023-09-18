@@ -1,4 +1,4 @@
-﻿namespace WeatherService.Testing.Integration.Core;
+﻿namespace WeatherService.Testing.Integration.Features;
 
 public struct AssemblyMarker
 {

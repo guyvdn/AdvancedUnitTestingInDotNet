@@ -7,7 +7,7 @@ using WeatherService.Core.Features.AuditLogs.Models;
 using WeatherService.Testing.Integration.Core;
 using WeatherService.Testing.Integration.Core.Infrastructure.Database;
 
-namespace WeatherService.Testing.EfCoreConfig.Specifications;
+namespace WeatherService.Testing.Integration.EfCoreConfig.Specifications;
 
 [TestFixture]
 internal abstract class DbContextTestSpecification<TDbContext, TMigrationsAssembly>

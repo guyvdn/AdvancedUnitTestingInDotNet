@@ -2,6 +2,14 @@
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure.Logging;
 
+public static class TestSinkAssertionsExtensions
+{
+    public static TestSinkAssertions Should(this TestSink testSink)
+    {
+        return new TestSinkAssertions(testSink);
+    }
+}
+
 public sealed class TestSinkAssertions : ReferenceTypeAssertions<TestSink, TestSinkAssertions>
 {
     public TestSinkAssertions(TestSink subject)
@@ -13,15 +21,20 @@ public sealed class TestSinkAssertions : ReferenceTypeAssertions<TestSink, TestS
 
     public AndConstraint<TestSinkAssertions> Log(string messageTemplate, string because = "")
     {
-        Subject.MessageTemplateTexts().Should().Contain(messageTemplate, because);
+        MessageTemplateTexts().Should().Contain(messageTemplate, because);
 
         return new AndConstraint<TestSinkAssertions>(this);
     }
 
     public AndConstraint<TestSinkAssertions> LogInOrder(IEnumerable<string> messageTemplates, string because = "")
     {
-        Subject.MessageTemplateTexts().Should().ContainInOrder(messageTemplates, because);
+        MessageTemplateTexts().Should().ContainInOrder(messageTemplates, because);
 
         return new AndConstraint<TestSinkAssertions>(this);
+    }
+
+    private IEnumerable<string> MessageTemplateTexts()
+    {
+        return Subject.Logs.Select(x => x.MessageTemplate.Text);
     }
 }

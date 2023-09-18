@@ -2,7 +2,7 @@
 using OneOf;
 using OneOf.Types;
 
-namespace WeatherService.Testing.Core.Features.Images.AddImageTests;
+namespace WeatherService.Testing.Unit.Core.Assertions;
 
 public static class OneOfAssertionsExtensions
 {
@@ -20,27 +20,27 @@ public class OneOfAssertions<TOneOf> : ReferenceTypeAssertions<TOneOf, OneOfAsse
     {
     }
 
-    public AndWhichConstraint<ObjectAssertions, None> BeNone()
+    public AndWhichConstraint<FluentAssertions.Primitives.ObjectAssertions, None> BeNone()
     {
         return Subject.Value.Should().BeOfType<None>();
     }   
     
-    public AndWhichConstraint<ObjectAssertions, NotFound> BeNotFound()
+    public AndWhichConstraint<FluentAssertions.Primitives.ObjectAssertions, NotFound> BeNotFound()
     {
         return Subject.Value.Should().BeOfType<NotFound>();
     }
 
-    public AndWhichConstraint<ObjectAssertions, TTo> Be<TTo>()
+    public AndWhichConstraint<FluentAssertions.Primitives.ObjectAssertions, TTo> Be<TTo>()
     {
         return Subject.Value.Should().BeOfType<TTo>();
     }
 
-    public AndConstraint<ObjectAssertions> Be<TTo>(TTo to)
+    public AndConstraint<FluentAssertions.Primitives.ObjectAssertions> Be<TTo>(TTo to)
     {
         return Subject.Value.Should().Be(to);
     }
 
-    public AndConstraint<ObjectAssertions> BeEquivalentTo<TTo>(TTo to)
+    public AndConstraint<FluentAssertions.Primitives.ObjectAssertions> BeEquivalentTo<TTo>(TTo to)
     {
         return Subject.Value.Should().BeEquivalentTo(to);
     }

@@ -1,7 +1,7 @@
 ﻿using WeatherService.Core.DatabaseConfiguration.DbContexts;
-using WeatherService.Testing.EfCoreConfig.Specifications;
+using WeatherService.Testing.Integration.EfCoreConfig.Specifications;
 
-namespace WeatherService.Testing.EfCoreConfig.DBContextTests;
+namespace WeatherService.Testing.Integration.EfCoreConfig.DBContextTests;
 
 internal sealed class WeatherApiDbContextTests : DbContextTestSpecification<WeatherApiDbContext, Migrations.AssemblyMarker>
 {

@@ -1,8 +1,8 @@
 ﻿using FluentAssertions.Equivalency;
 using WeatherService.Core.Features.AuditLogs.Models;
-using WeatherService.Testing.Core.EquivalencySteps;
+using WeatherService.Testing.Unit.Core.EquivalencySteps;
 
-namespace WeatherService.Testing.Features.EquivalencySteps;
+namespace WeatherService.Testing.Unit.Features.EquivalencySteps;
 
 public class AuditLogMessageToStringEquivalencyStep : EquivalencyStep<AuditLogMessage, string>
 {

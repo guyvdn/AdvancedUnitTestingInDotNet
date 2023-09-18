@@ -1,6 +1,6 @@
 ﻿using FluentAssertions.Primitives;
 
-namespace WeatherService.Testing.Core.Assertions;
+namespace WeatherService.Testing.Unit.Core.Assertions;
 
 public static class ObjectAssertions
 {

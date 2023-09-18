@@ -8,10 +8,10 @@ using WeatherService.Core;
 using WeatherService.Core.Features.AuditLogs.Models;
 using WeatherService.Core.Features.WeatherForecasts;
 using WeatherService.Core.Features.WeatherForecasts.Models;
-using WeatherService.Testing.Core;
-using WeatherService.Testing.Core.Specifications;
+using WeatherService.Testing.Unit.Core;
+using WeatherService.Testing.Unit.Core.Specifications;
 
-namespace WeatherService.Testing.Features.Features.WeatherForecasts.GetCurrentWeatherTests;
+namespace WeatherService.Testing.Unit.Features.Features.WeatherForecasts.GetCurrentWeatherTests;
 
 internal sealed class When_getting_a_WeatherForecast : TestSpecification
 {

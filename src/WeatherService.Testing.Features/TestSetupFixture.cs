@@ -1,6 +1,6 @@
-﻿using WeatherService.Testing.Core.Specifications;
+﻿using WeatherService.Testing.Unit.Core.Specifications;
 
-namespace WeatherService.Testing.Features;
+namespace WeatherService.Testing.Unit.Features;
 
 [SetUpFixture]
 public sealed class TestSetupFixture

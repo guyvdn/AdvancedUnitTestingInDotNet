@@ -1,7 +1,7 @@
-﻿using WeatherService.Testing.Core.Customizations;
-using WeatherService.Testing.Core.Fakes;
+﻿using WeatherService.Testing.Unit.Core.Customizations;
+using WeatherService.Testing.Unit.Core.Fakes;
 
-namespace WeatherService.Testing.Core.Specifications;
+namespace WeatherService.Testing.Unit.Core.Specifications;
 
 [TestFixture]
 public abstract class TestSpecificationBase

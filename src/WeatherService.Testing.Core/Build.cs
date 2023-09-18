@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.Json;
 
-namespace WeatherService.Testing.Core;
+namespace WeatherService.Testing.Unit.Core;
 
 public class Build
 {

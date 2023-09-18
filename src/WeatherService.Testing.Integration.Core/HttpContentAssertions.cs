@@ -6,7 +6,7 @@ using WeatherService.Representation;
 
 namespace WeatherService.Testing.Integration.Core;
 
-internal static class HttpContentExtensions
+public static class HttpContentExtensions
 {
     public static HttpContentAssertions Should(this HttpContent content)
     {

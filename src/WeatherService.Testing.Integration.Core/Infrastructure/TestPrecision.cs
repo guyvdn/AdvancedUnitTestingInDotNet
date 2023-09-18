@@ -1,6 +1,6 @@
 ﻿namespace WeatherService.Testing.Integration.Core.Infrastructure;
 
-internal static class TestPrecision
+public static class TestPrecision
 {
     public static TimeSpan DateTimeEquals { get; } = TimeSpan.FromMilliseconds(value: 500);
 

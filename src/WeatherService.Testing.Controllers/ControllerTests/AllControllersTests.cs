@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
-using WeatherService.Testing.Controllers.Specifications;
+using WeatherService.Testing.Unit.Controllers.Specifications;
 
-namespace WeatherService.Testing.Controllers.ControllerTests;
+namespace WeatherService.Testing.Unit.Controllers.ControllerTests;
 
 [TestFixture]
 internal sealed class AllControllersTests

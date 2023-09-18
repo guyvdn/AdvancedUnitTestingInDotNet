@@ -2,13 +2,12 @@
 using OneOf.Types;
 using WeatherService.Core.Features.Images;
 using WeatherService.Core.Services;
-using WeatherService.Testing.Core;
-using WeatherService.Testing.Core.Assertions;
-using WeatherService.Testing.Core.Fakes;
-using WeatherService.Testing.Core.Features.Images.AddImageTests;
-using WeatherService.Testing.Core.Specifications;
+using WeatherService.Testing.Unit.Core;
+using WeatherService.Testing.Unit.Core.Assertions;
+using WeatherService.Testing.Unit.Core.Fakes;
+using WeatherService.Testing.Unit.Core.Specifications;
 
-namespace WeatherService.Testing.Features.Features.Images.AddImageTests;
+namespace WeatherService.Testing.Unit.Features.Features.Images.AddImageTests;
 
 internal sealed class When_getting_an_image_that_does_not_exist : TestSpecification<GetImage.Handler>
 {

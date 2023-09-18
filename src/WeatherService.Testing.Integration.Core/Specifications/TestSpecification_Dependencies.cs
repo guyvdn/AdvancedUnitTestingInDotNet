@@ -1,7 +1,7 @@
-﻿using NSubstitute.Core;
-using NSubstitute;
+﻿using NSubstitute;
+using NSubstitute.Core;
 
-namespace WeatherService.Testing.Integration.Core.Infrastructure;
+namespace WeatherService.Testing.Integration.Core.Specifications;
 
 public abstract partial class TestSpecification
 {

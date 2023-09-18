@@ -1,6 +1,6 @@
 ﻿using WeatherService.Core.Features.WeatherForecasts.Models;
 
-namespace WeatherService.Api.Features.WeatherForecast;
+namespace WeatherService.Api.Features.WeatherForecasts;
 
 internal static class WeatherForecastMapper
 {

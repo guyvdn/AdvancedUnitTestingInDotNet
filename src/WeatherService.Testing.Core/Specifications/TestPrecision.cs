@@ -1,4 +1,4 @@
-﻿namespace WeatherService.Testing.Core.Specifications;
+﻿namespace WeatherService.Testing.Unit.Core.Specifications;
 
 public static class TestPrecision
 {

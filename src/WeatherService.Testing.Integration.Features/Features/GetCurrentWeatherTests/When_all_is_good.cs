@@ -1,12 +1,13 @@
 ﻿using System.Net.Http.Json;
 using RichardSzalay.MockHttp;
-using WeatherService.Api.Features.WeatherForecast;
+using WeatherService.Api.Features.WeatherForecasts;
 using WeatherService.Core.Features.WeatherForecasts;
 using WeatherService.Core.Features.WeatherForecasts.Models;
 using WeatherService.Representation;
 using WeatherService.Testing.Integration.Core.Infrastructure;
+using WeatherService.Testing.Integration.Core.Specifications;
 
-namespace WeatherService.Testing.Integration.Core.Features.GetCurrentWeatherTests;
+namespace WeatherService.Testing.Integration.Features.Features.GetCurrentWeatherTests;
 
 internal sealed class When_all_is_good
     : TestSpecification<WeatherForecastsController, GetCurrentWeather.Request, WeatherForecast>

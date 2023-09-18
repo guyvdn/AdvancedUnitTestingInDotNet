@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace WeatherService.Testing.Core.Fakes;
+namespace WeatherService.Testing.Unit.Core.Fakes;
 
 public abstract class FakeLogger
 {

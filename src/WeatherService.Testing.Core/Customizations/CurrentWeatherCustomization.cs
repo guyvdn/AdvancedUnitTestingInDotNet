@@ -1,6 +1,6 @@
 ﻿using WeatherService.Core.Features.WeatherForecasts.Models;
 
-namespace WeatherService.Testing.Core.Customizations;
+namespace WeatherService.Testing.Unit.Core.Customizations;
 
 public class CurrentWeatherCustomization : ICustomization
 {

@@ -4,9 +4,10 @@ using WeatherService.Core.DatabaseConfiguration.DbContexts;
 using WeatherService.Core.Features.AuditLogs;
 using WeatherService.Representation;
 using WeatherService.Testing.Integration.Core;
-using WeatherService.Testing.Integration.Core.Infrastructure;
 using WeatherService.Testing.Integration.Core.Infrastructure.Database;
+using WeatherService.Testing.Integration.Core.Specifications;
 using WeatherService.Testing.Integration.Seeding.Fakers;
+using WeatherService.Testing.Unit.Core;
 
 namespace WeatherService.Testing.Integration.Seeding.Features.GetAuditLogsTests;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestPlatform;
 
-namespace WeatherService.Testing.Core.Specifications;
+namespace WeatherService.Testing.Unit.Core.Specifications;
 
 /// <summary>
 /// We want our tests to run as fast as possible

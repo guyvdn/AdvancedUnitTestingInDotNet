@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using AutoFixture.Kernel;
 
-namespace WeatherService.Testing.Core.Customizations;
+namespace WeatherService.Testing.Unit.Core.Customizations;
 
 internal sealed class Base64StringCustomization: ISpecimenBuilder
 {

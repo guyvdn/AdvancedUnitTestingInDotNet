@@ -1,6 +1,6 @@
 using WeatherService.Core.Features.WeatherForecasts;
 
-namespace WeatherService.Api.Features.WeatherForecast;
+namespace WeatherService.Api.Features.WeatherForecasts;
 
 [Authorize]
 [ApiController]

@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\WeatherService.Testing.Core\WeatherService.Testing.Core.csproj" />
+		<ProjectReference Include="..\WeatherService.Testing.Core\WeatherService.Testing.Unit.Core.csproj" />
 		<ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
 	</ItemGroup>
 

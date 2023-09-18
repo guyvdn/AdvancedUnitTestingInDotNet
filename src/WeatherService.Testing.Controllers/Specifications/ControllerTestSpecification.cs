@@ -4,7 +4,7 @@ using FluentAssertions.Execution;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WeatherService.Testing.Controllers.Specifications;
+namespace WeatherService.Testing.Unit.Controllers.Specifications;
 
 [TestFixture]
 internal abstract class ControllerTestSpecification<TController>

@@ -3,7 +3,7 @@ using FluentAssertions.Primitives;
 
 namespace WeatherService.Testing.Integration.Core.Extensions;
 
-internal static class HttpResponseHeadersExtensions
+public static class HttpResponseHeadersExtensions
 {
     public static HttpResponseHeadersAssertions Should(this HttpResponseHeaders headers)
     {
@@ -11,7 +11,7 @@ internal static class HttpResponseHeadersExtensions
     }
 }
 
-internal sealed class HttpResponseHeadersAssertions : ReferenceTypeAssertions<HttpResponseHeaders, HttpResponseHeadersAssertions>
+public sealed class HttpResponseHeadersAssertions : ReferenceTypeAssertions<HttpResponseHeaders, HttpResponseHeadersAssertions>
 {
     public HttpResponseHeadersAssertions(HttpResponseHeaders subject)
         : base(subject)

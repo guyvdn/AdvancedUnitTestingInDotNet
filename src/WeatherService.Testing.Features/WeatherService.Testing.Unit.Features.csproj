@@ -10,8 +10,12 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\WeatherService.Core\WeatherService.Core.csproj" />
-	  <ProjectReference Include="..\WeatherService.Testing.Core\WeatherService.Testing.Core.csproj" />
+	  <ProjectReference Include="..\WeatherService.Testing.Core\WeatherService.Testing.Unit.Core.csproj" />
 	  <ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="FeatureTests\AuditLogs\" />
 	</ItemGroup>
 
 </Project>

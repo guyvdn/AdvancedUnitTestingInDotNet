@@ -2,10 +2,11 @@
 using WeatherService.Api.Features.Images;
 using WeatherService.Core.Features.Images;
 using WeatherService.Representation;
+using WeatherService.Testing.Integration.Core;
 using WeatherService.Testing.Integration.Core.Extensions;
-using WeatherService.Testing.Integration.Core.Infrastructure;
+using WeatherService.Testing.Integration.Core.Specifications;
 
-namespace WeatherService.Testing.Integration.Core.Features.ImageTests;
+namespace WeatherService.Testing.Integration.Features.Features.ImageTests;
 
 internal sealed class When_all_is_good : TestSpecification<ImagesController, AddImage.Request>
 {
@@ -28,5 +29,11 @@ internal sealed class When_all_is_good : TestSpecification<ImagesController, Add
         _response.Should().HaveStatusCode(HttpStatusCode.Created);
         _response.Headers.Should().HaveLocation($"http://localhost/Images?conditionCode={_image.ConditionCode}");
         await _response.Content.Should().BeEquivalentTo(_image);
+    }
+
+    [Test]
+    public async Task It_should_have_saved_the_file()
+    {
+        
     }
 }

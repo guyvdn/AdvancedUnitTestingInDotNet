@@ -1,8 +1,8 @@
 ﻿using WeatherService.Api.Features.AuditLogs;
 using WeatherService.Core.Features.AuditLogs.Models;
-using WeatherService.Testing.Core.Specifications;
+using WeatherService.Testing.Unit.Core.Specifications;
 
-namespace WeatherService.Testing.Features.Features.AuditLogs;
+namespace WeatherService.Testing.Unit.Features.Features.MapperTests;
 
 internal sealed class When_mapping_an_AuditLog : TestSpecificationBase
 {

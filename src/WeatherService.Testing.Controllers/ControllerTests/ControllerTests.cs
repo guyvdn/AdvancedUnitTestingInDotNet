@@ -1,9 +1,9 @@
 ﻿using WeatherService.Api.Features.AuditLogs;
 using WeatherService.Api.Features.Images;
-using WeatherService.Api.Features.WeatherForecast;
-using WeatherService.Testing.Controllers.Specifications;
+using WeatherService.Api.Features.WeatherForecasts;
+using WeatherService.Testing.Unit.Controllers.Specifications;
 
-namespace WeatherService.Testing.Controllers.ControllerTests;
+namespace WeatherService.Testing.Unit.Controllers.ControllerTests;
 
 internal sealed class WeatherForecastControllerTest 
     : ControllerTestSpecification<WeatherForecastsController>

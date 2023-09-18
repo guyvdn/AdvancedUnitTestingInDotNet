@@ -1,10 +1,10 @@
 ﻿using FluentValidation.TestHelper;
 using WeatherService.Core.Features.AuditLogs;
-using WeatherService.Testing.Core.Specifications;
+using WeatherService.Testing.Unit.Core.Specifications;
 
-namespace WeatherService.Testing.Features.Features.AuditLogs;
+namespace WeatherService.Testing.Unit.Features.Features.ValidatorTests;
 
-internal sealed class When_validating_a_request : TestSpecification<GetAuditLogs.Validator>
+internal sealed class When_validating_a_GetAuditLogs_request : TestSpecification<GetAuditLogs.Validator>
 {
     [TestCase(1)]
     [TestCase(4)]

@@ -1,4 +1,4 @@
-﻿namespace WeatherService.Testing.Core.Customizations;
+﻿namespace WeatherService.Testing.Unit.Core.Customizations;
 
 internal static class FixtureExtensions
 {

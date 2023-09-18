@@ -1,8 +1,8 @@
 ﻿using FluentAssertions.Primitives;
 using Microsoft.Extensions.Logging;
-using WeatherService.Testing.Core.Fakes;
+using WeatherService.Testing.Unit.Core.Fakes;
 
-namespace WeatherService.Testing.Core.Assertions;
+namespace WeatherService.Testing.Unit.Core.Assertions;
 
 public static class FakeLoggerAssertionsExtensions
 {

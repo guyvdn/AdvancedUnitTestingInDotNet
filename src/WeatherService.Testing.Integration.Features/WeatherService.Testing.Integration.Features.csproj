@@ -8,4 +8,9 @@
 		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\WeatherService.Testing.Integration.Core\WeatherService.Testing.Integration.Core.csproj" />
+	  <ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
+	</ItemGroup>
+
 </Project>

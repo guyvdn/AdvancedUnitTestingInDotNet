@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using WeatherService.Testing.Unit.Core.Specifications;
 
-namespace WeatherService.Testing.Unit.Core.Specifications;
+namespace WeatherService.Testing.Unit.Core.Dependencies;
 
-public sealed class TestDependencies : IEnumerable<object>
+public sealed class DependencyList : IEnumerable<object>
 {
     private readonly List<IDependencyBuilder> _dependencyBuilders = new();
 

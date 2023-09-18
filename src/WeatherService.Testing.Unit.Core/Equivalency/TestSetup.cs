@@ -1,6 +1,6 @@
 ﻿using FluentAssertions.Equivalency;
 
-namespace WeatherService.Testing.Unit.Core.Specifications;
+namespace WeatherService.Testing.Unit.Core.Equivalency;
 
 public static class TestSetup
 {

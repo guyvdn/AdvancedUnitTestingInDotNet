@@ -1,6 +1,6 @@
 ﻿using FluentAssertions.Equivalency;
 
-namespace WeatherService.Testing.Unit.Core.EquivalencySteps;
+namespace WeatherService.Testing.Unit.Core.Equivalency;
 
 public abstract class EquivalencyStep<TSubject, TExpectation> : IEquivalencyStep
 {

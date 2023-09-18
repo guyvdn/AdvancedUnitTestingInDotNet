@@ -1,6 +1,6 @@
 ﻿using FluentAssertions.Equivalency;
 using WeatherService.Core.Features.AuditLogs.Models;
-using WeatherService.Testing.Unit.Core.EquivalencySteps;
+using WeatherService.Testing.Unit.Core.Equivalency;
 
 namespace WeatherService.Testing.Unit.Features.EquivalencySteps;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using WeatherService.Testing.Unit.Core.Specifications;
+using WeatherService.Testing.Unit.Core.Dependencies;
 
 namespace WeatherService.Testing.Unit.Core.Fakes;
 

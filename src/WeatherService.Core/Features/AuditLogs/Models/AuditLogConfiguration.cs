@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+// ReSharper disable once RedundantUsingDirective
 using WeatherService.Core.DatabaseConfiguration.Constants;
 
 namespace WeatherService.Core.Features.AuditLogs.Models;

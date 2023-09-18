@@ -8,6 +8,7 @@ public abstract partial class TestSpecification
     private void SetupDependencies()
     {
         MockHttpClient();
+        MockFileSystem();
     }
 
     private void ResetDependencies()

@@ -1,4 +1,4 @@
-﻿namespace WeatherService.Testing.Unit.Core.Specifications;
+﻿namespace WeatherService.Testing.Unit.Core.Dependencies;
 
 public interface IDependencyBuilder
 {

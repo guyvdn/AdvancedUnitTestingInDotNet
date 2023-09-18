@@ -1,4 +1,4 @@
-﻿using WeatherService.Testing.Unit.Core.Specifications;
+﻿using WeatherService.Testing.Unit.Core.Equivalency;
 
 namespace WeatherService.Testing.Unit.Features;
 

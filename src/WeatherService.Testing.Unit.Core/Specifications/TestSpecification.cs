@@ -1,4 +1,5 @@
 ﻿using WeatherService.Testing.Unit.Core.Customizations;
+using WeatherService.Testing.Unit.Core.Dependencies;
 using WeatherService.Testing.Unit.Core.Fakes;
 
 namespace WeatherService.Testing.Unit.Core.Specifications;
@@ -71,7 +72,7 @@ public abstract class TestSpecification<TSubjectUnderTest> : TestSpecification
 
     protected virtual object[] ExplicitDependencies { get; } = Array.Empty<object>();
 
-    private TestDependencies Dependencies { get; } = new();
+    private DependencyList Dependencies { get; } = new();
 
     [OneTimeSetUp]
     public override async Task OneTimeSetUp()

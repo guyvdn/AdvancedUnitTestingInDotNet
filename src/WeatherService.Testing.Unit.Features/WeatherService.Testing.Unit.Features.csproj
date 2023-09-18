@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
@@ -9,10 +9,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\WeatherService.Core\WeatherService.Core.csproj" />
-	  <ProjectReference Include="..\WeatherService.Testing.Core\WeatherService.Testing.Unit.Core.csproj" />
-	  <ProjectReference Include="..\WeatherService.Testing.Unit.Core\WeatherService.Testing.Unit.Core.csproj" />
-	  <ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
+		<ProjectReference Include="..\WeatherService.Core\WeatherService.Core.csproj" />
+		<ProjectReference Include="..\WeatherService.Testing.Unit.Core\WeatherService.Testing.Unit.Core.csproj" />
+		<ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-// ReSharper disable once RedundantUsingDirective
 using WeatherService.Core.DatabaseConfiguration.Constants;
 
 namespace WeatherService.Core.Features.AuditLogs.Models;
@@ -13,19 +12,19 @@ internal sealed class AuditLogConfiguration : IEntityTypeConfiguration<AuditLog>
     /// <param name="builder"></param>
     public void Configure(EntityTypeBuilder<AuditLog> builder)
     {
-        //builder.ToTable("AuditLog");
+        builder.ToTable("AuditLog");
 
-        //builder.Property(x => x.NameIdentifier)
-        //    .HasColumnType(SqlType.VarChar)
-        //    .HasMaxLength(50);
+        builder.Property(x => x.NameIdentifier)
+            .HasColumnType(SqlType.VarChar)
+            .HasMaxLength(50);
 
-        //builder.Property(x => x.Message)
-        //    .HasColumnType(SqlType.VarChar)
-        //    .HasConversion<AuditLogMessageConverter>()
-        //    .HasMaxLength(100);
+        builder.Property(x => x.Message)
+            .HasColumnType(SqlType.VarChar)
+            .HasConversion<AuditLogMessageConverter>()
+            .HasMaxLength(100);
 
-        //builder.Property(x => x.TimeStampUTC)
-        //    //.HasColumnType(SqlType.DateTime)
-        //    .HasDefaultValueSql(SqlDefault.GetUtcDate);
+        builder.Property(x => x.TimeStampUTC)
+            .HasColumnType(SqlType.DateTime)
+            .HasDefaultValueSql(SqlDefault.GetUtcDate);
     }
 }

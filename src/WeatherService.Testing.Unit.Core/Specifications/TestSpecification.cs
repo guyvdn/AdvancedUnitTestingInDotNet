@@ -99,7 +99,7 @@ public abstract class TestSpecification<TSubjectUnderTest> : TestSpecification
         return (TSubjectUnderTest)Activator.CreateInstance(typeof(TSubjectUnderTest), Dependencies.ToArray())!;
     }
 
-    public TDependency Dependency<TDependency>() where TDependency : class
+    protected TDependency Dependency<TDependency>() where TDependency : class
     {
         if (!Dependencies.TryGet<TDependency>(out var dependency))
             throw new TestSpecificationException($"No dependency of type {typeof(TDependency).Name} found");

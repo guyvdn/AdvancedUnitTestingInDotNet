@@ -15,6 +15,7 @@ internal sealed class When_all_is_good
     private WeatherForecast _response;
     private WeatherResponse _weather;
 
+    // Mock HttpClient with RichardSzalay.MockHttp
     protected override void Arrange()
     {
         _weather = Fixture.Create<WeatherResponse>();
@@ -38,20 +39,25 @@ internal sealed class When_all_is_good
         _response!.TemperatureC.Should().Be(_weather.Current.TemperatureC);
     }
 
-    [Test]
+    [Test] 
     public async Task It_should_have_created_an_audit_log()
     {
         var auditLogs = await GetFromJsonAsync<IEnumerable<AuditLog>>("AuditLogs?numberOfDays=1");
 
         var latestLog = auditLogs.OrderByDescending(x => x.TimeStampUTC).First();
+
+        // Use Should().BeCloseTo() instead of trying to Mock DateTime 
         latestLog.TimeStampUTC.Should().BeCloseTo(DateTime.UtcNow, TestPrecision.DateTimeCloseTo);
+
         latestLog.Message.Should().Be("Get current weather was called for city 'Mechelen'");
+
         latestLog.NameIdentifier.Should().Be(Factory.UserName);
     }
 
     [Test]
     public void It_should_log_the_expected_messages()
     {
+        // TestSink holds all messages so we do not need to open Seq to view them
         TestSink.Should().Log("{User} is requesting weather for {City}");
     }
 }

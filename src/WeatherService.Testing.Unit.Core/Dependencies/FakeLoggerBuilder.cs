@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using WeatherService.Testing.Unit.Core.Dependencies;
 
-namespace WeatherService.Testing.Unit.Core.Fakes;
+namespace WeatherService.Testing.Unit.Core.Dependencies;
 
 public sealed class FakeLoggerBuilder : IDependencyBuilder
 {

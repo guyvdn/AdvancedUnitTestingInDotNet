@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace WeatherService.Testing.Unit.Core.Fakes;
+namespace WeatherService.Testing.Unit.Core.Dependencies;
 
 public abstract class FakeLogger
 {
@@ -20,7 +20,12 @@ public sealed class FakeLogger<T> : FakeLogger, ILogger<T>
         return true;
     }
 
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+    public void Log<TState>(
+        LogLevel logLevel, 
+        EventId eventId, 
+        TState state, 
+        Exception? exception, 
+        Func<TState, Exception?, string> formatter)
     {
         var message = formatter(state, exception);
 

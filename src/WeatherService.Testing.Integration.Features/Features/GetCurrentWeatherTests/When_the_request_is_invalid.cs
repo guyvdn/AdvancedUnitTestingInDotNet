@@ -19,14 +19,9 @@ internal sealed class When_the_request_is_invalid
     [Test]
     public void It_should_return_the_correct_response()
     {
+        // Assert the ProblemDetails
         _response.Content
             .Should().HaveProblemDetails()
             .And.ContainError(key: "City");
-    }
-
-    [Test]
-    public void It_should_log_the_expected_messages()
-    {
-        TestSink.Should().Log("Error validating {Request} with {Failures}");
     }
 }

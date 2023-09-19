@@ -18,8 +18,4 @@
 		<PackageReference Include="OneOf" Version="3.0.263" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Extensions\" />
-	</ItemGroup>
-
 </Project>

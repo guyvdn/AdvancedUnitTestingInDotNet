@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Security.Claims;
+using System.Text;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace WeatherService.Testing.Unit.Core;
 
@@ -11,6 +13,8 @@ public class Build
     {
         Random = new Random(seed);
     }
+
+    #region Text
 
     public static string String(int length = 20)
     {
@@ -41,6 +45,10 @@ public class Build
         return $"{Word(5)}.{Word(10)}@{Word(10)}.{Word(3)}";
     }
 
+    #endregion
+
+    #region Numbers
+
     public static short Short(short minValue = short.MinValue, short maxValue = short.MaxValue)
     {
         return (short)Random.Next(minValue, maxValue);
@@ -66,20 +74,9 @@ public class Build
         return Encoding.ASCII.GetBytes(s: String());
     }
 
-    public static Guid Guid()
-    {
-        return System.Guid.NewGuid();
-    }
+    #endregion
 
-    public static Uri Uri()
-    {
-        return new Uri(uriString: "https://localhost/" + String());
-    }
-
-    public static bool Bool()
-    {
-        return Random.Next(minValue: 0, maxValue: 2) == 1;
-    }
+    #region Dates
 
     public static DateTime DateTime(DateTime? start = null, DateTime? end = null)
     {
@@ -115,6 +112,10 @@ public class Build
         return min.Value + new TimeSpan(ticks: Random.NextInt64(maxValue: range.Value.Ticks));
     }
 
+    #endregion
+
+    #region CancellationTokens
+
     public static CancellationToken CancellationToken()
     {
         return new CancellationTokenSource().Token;
@@ -125,16 +126,15 @@ public class Build
         return new CancellationTokenSource((int)delay.TotalMilliseconds).Token;
     }
 
+    #endregion
+
+    #region Lists
+
     public static T EnumValue<T>()
     {
         var values = Enum.GetValues(typeof(T));
         var index = Int(minValue: 0, values.Length);
         return (T)values.GetValue(index)!;
-    }
-
-    public static string Json<T>(T value)
-    {
-        return JsonSerializer.Serialize(value);
     }
 
     public static T OneOf<T>(params T[] values)
@@ -155,8 +155,53 @@ public class Build
         return items.OrderBy(_ => Random.Next());
     }
 
+    #endregion
+
+    #region Other
+
+    public static Guid Guid()
+    {
+        return System.Guid.NewGuid();
+    }
+
+    public static Uri Uri()
+    {
+        return new Uri(uriString: "https://localhost/" + String());
+    }
+
+    public static bool Bool()
+    {
+        return Random.Next(minValue: 0, maxValue: 2) == 1;
+    }
+    
+    public static string Json<T>(T value)
+    {
+        return JsonSerializer.Serialize(value);
+    }
+
     public static string Base64String()
     {
         return Convert.ToBase64String(Bytes());
     }
+
+    #endregion
+
+    #region Project Specific
+
+    public static DefaultHttpContext AuthenticatedHttpContext(string user)
+    {
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.NameIdentifier, user)
+        };
+
+        var identity = new ClaimsIdentity(claims);
+
+        return new DefaultHttpContext
+        {
+            User = new ClaimsPrincipal(identity)
+        };
+    }
+
+    #endregion
 }

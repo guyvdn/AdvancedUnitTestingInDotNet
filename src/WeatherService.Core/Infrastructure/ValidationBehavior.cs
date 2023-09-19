@@ -4,7 +4,8 @@ using Microsoft.Extensions.Logging;
 
 namespace WeatherService.Core.Infrastructure;
 
-internal sealed class ValidationBehavior<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
+internal sealed class ValidationBehavior<TRequest> 
+    : IRequestPreProcessor<TRequest> where TRequest : notnull
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
     private readonly ILogger<ValidationBehavior<TRequest>> _logger;

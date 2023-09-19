@@ -18,6 +18,8 @@ public sealed class LocalDbContext : IDatabaseContext
             options.Using<DateTime>(ctx => ctx.Subject.Should().BeCloseTo(ctx.Expectation, TestPrecision.DateTimeEquals)).WhenTypeIs<DateTime>());
 
         _localDb.Create();
+
+        // Run Migrations
         SqlHelper.MigrateUp<Migrations.AssemblyMarker>(_localDb.ConnectionString);
         SqlHelper.MigrateUp<AssemblyMarker>(_localDb.ConnectionString);
 

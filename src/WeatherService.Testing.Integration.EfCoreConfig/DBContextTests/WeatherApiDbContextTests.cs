@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using EfSchemaCompare;
+using NUnit.Framework;
 using WeatherService.Core.DatabaseConfiguration.DbContexts;
 using WeatherService.Core.Features.AuditLogs.Models;
 using WeatherService.Testing.Integration.EfCoreConfig.Specifications;

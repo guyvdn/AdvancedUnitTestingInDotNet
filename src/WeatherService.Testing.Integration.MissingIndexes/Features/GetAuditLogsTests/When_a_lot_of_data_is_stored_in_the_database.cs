@@ -1,12 +1,16 @@
 ﻿using WeatherService.Core.DatabaseConfiguration.DbContexts;
 using WeatherService.Representation;
 using WeatherService.Testing.Integration.Core;
+using WeatherService.Testing.Integration.Core.FirstResponderKit;
 using WeatherService.Testing.Integration.Core.Infrastructure.Database;
 using WeatherService.Testing.Integration.Core.Specifications;
 using WeatherService.Testing.Integration.Seeding.Fakers;
 
 namespace WeatherService.Testing.Integration.Seeding.Features.GetAuditLogsTests;
 
+/// <summary>
+/// <see cref="InstallFirstResponderKit"/>
+/// </summary>
 [Explicit("LongRunning")]
 [Category("LongRunning")]
 internal sealed class When_a_lot_of_data_is_stored_in_the_database
@@ -19,7 +23,7 @@ internal sealed class When_a_lot_of_data_is_stored_in_the_database
         var auditLogFaker = new AuditLogFaker()
             .RuleFor(x => x.AuditLogId, _ => 0)
             .UseSeed(12345);
-        
+
         await Seed.WithDbContextAsync<WeatherApiDbContext>(async db =>
         {
             await db.AuditLogs.AddRangeAsync(auditLogFaker.Generate(1_000));
@@ -43,13 +47,14 @@ internal sealed class When_a_lot_of_data_is_stored_in_the_database
     public void Should_not_have_missing_indexes()
     {
         const int CommunityMessage = 1;
-        
+
         var result = SqlHelper
             .ExecuteReader("EXEC [dbo].[sp_BlitzIndex] @ThresholdMB = 1, @Mode = 3", DatabaseContext.Current.ConnectionString)
             .Skip(CommunityMessage);
 
         result.Should().BeEmpty();
 
+        // Obove call will fail with this message
         Assert.Fail("""
                     Expected result to be empty, but found {{"UnitTests", "dbo", "AuditLog", 584998M, "INEQUALITY:
                     [TimeStampUTC]  {datetime} INCLUDE:  [NameIdentifier]  {varchar(50)}, [Message]  {varchar(100)}

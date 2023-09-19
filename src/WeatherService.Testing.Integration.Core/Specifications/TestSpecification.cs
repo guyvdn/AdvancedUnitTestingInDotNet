@@ -8,6 +8,7 @@ using WeatherService.Testing.Unit.Core.Specifications;
 
 namespace WeatherService.Testing.Integration.Core.Specifications;
 
+// Generic type definition can be used for quick navigation
 public abstract class TestSpecification<TController, TRequest, TResponse> : TestSpecification
     where TController : ControllerBase
     where TRequest : IBaseRequest

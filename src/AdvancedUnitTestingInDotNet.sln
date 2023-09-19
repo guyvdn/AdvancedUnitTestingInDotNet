@@ -13,10 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Core", "WeatherService.Core\WeatherService.Core.csproj", "{F040E526-49A8-4DAE-8B48-31568DD9DCB1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "90. Solution Items", "90. Solution Items", "{E1A6BFEE-4C2F-47B4-86EB-B74303465598}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99. Markdown", "99. Markdown", "{E1A6BFEE-4C2F-47B4-86EB-B74303465598}"
 	ProjectSection(SolutionItems) = preProject
-		Agenda.md = Agenda.md
-		Directory.Build.props = Directory.Build.props
+		..\Demo.md = ..\Demo.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Migrations", "WeatherService.Migrations\WeatherService.Migrations.csproj", "{DF8934C7-06B5-4567-9EB5-0E6A79C345B3}"
@@ -51,9 +50,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "70. Integration Testing Fea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Testing.Integration.Features", "WeatherService.Testing.Integration.Features\WeatherService.Testing.Integration.Features.csproj", "{08295E82-D08B-42FF-A568-6A645618F49E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E0975B7A-AED6-4D05-9B2F-95FF583CD1D4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Unit Testing Frameworks", "01. Unit Testing Frameworks", "{02DE405A-25C1-4482-91C1-166124C6899F}"
 	ProjectSection(SolutionItems) = preProject
-		..\Demo.md = ..\Demo.md
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Global

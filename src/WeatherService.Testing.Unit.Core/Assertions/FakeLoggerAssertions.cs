@@ -1,6 +1,6 @@
 ﻿using FluentAssertions.Primitives;
 using Microsoft.Extensions.Logging;
-using WeatherService.Testing.Unit.Core.Fakes;
+using WeatherService.Testing.Unit.Core.Dependencies;
 
 namespace WeatherService.Testing.Unit.Core.Assertions;
 
@@ -14,9 +14,9 @@ public static class FakeLoggerAssertionsExtensions
 
 public sealed class FakeLoggerAssertions : ReferenceTypeAssertions<FakeLogger, FakeLoggerAssertions>
 {
-    private int _assertedCount;
-
     protected override string Identifier => nameof(FakeLogger);
+
+    private int _assertedCount;
 
     public FakeLoggerAssertions(FakeLogger subject) : base(subject)
     {

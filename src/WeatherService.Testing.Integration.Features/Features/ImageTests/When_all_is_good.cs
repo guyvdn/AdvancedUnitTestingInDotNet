@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using NSubstitute;
 using WeatherService.Api.Features.Images;
 using WeatherService.Core.Features.Images;
 using WeatherService.Representation;
@@ -28,7 +27,10 @@ internal sealed class When_all_is_good : TestSpecification<ImagesController, Add
     public async Task It_should_return_the_correct_result()
     {
         _response.Should().HaveStatusCode(HttpStatusCode.Created);
+
+        // Some more FluentAssertions extensions
         _response.Headers.Should().HaveLocation($"http://localhost/Images?conditionCode={_image.ConditionCode}");
+
         await _response.Content.Should().BeEquivalentTo(_image);
     }
 }

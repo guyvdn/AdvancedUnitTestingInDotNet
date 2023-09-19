@@ -2,7 +2,7 @@ using WeatherService.Core.Features.WeatherForecasts;
 
 namespace WeatherService.Api.Features.WeatherForecasts;
 
-[Authorize]
+// [Authorize] Would you spot this with manual testing?
 [ApiController]
 [Route("[controller]")]
 public sealed class WeatherForecastsController : ControllerBase
@@ -31,28 +31,28 @@ public sealed class WeatherForecastsController : ControllerBase
     }
 }
 
-//[ApiController]
-//[Route("[controller]")]
-//internal class BadWeatherForecastsController : ControllerBase
-//{
-//    private readonly ISender _sender;
+[ApiController]
+[Route("[controller]")]
+internal class BadWeatherForecastsController : ControllerBase
+{
+    private readonly ISender _sender;
 
-//    public BadWeatherForecastsController(ISender sender)
-//    {
-//        _sender = sender;
-//    }
+    public BadWeatherForecastsController(ISender sender)
+    {
+        _sender = sender;
+    }
 
-//    [HttpGet(Name = "GetWeatherForecast")]
-//    public async Task<Representation.WeatherForecast> Get(
-//        string city = "",
-//        CancellationToken cancellationToken = default)
-//    {
-//        var request = new GetCurrentWeather.Request
-//        {
-//            City = city
-//        };
+    [HttpGet(Name = "GetWeatherForecast")]
+    public async Task<Representation.WeatherForecast> Get(
+        string city = "",
+        CancellationToken cancellationToken = default)
+    {
+        var request = new GetCurrentWeather.Request
+        {
+            City = city
+        };
 
-//        var foreCast = await _sender.Send(request, cancellationToken);
-//        return foreCast.ToRepresentation();
-//    }
-//}
+        var foreCast = await _sender.Send(request, cancellationToken);
+        return foreCast.ToRepresentation();
+    }
+}

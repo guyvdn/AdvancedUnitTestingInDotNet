@@ -1,6 +1,5 @@
 ﻿using WeatherService.Testing.Unit.Core.Customizations;
 using WeatherService.Testing.Unit.Core.Dependencies;
-using WeatherService.Testing.Unit.Core.Fakes;
 
 namespace WeatherService.Testing.Unit.Core.Specifications;
 

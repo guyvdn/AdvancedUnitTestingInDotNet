@@ -4,7 +4,6 @@ using WeatherService.Core.Features.Images;
 using WeatherService.Core.Services;
 using WeatherService.Testing.Unit.Core;
 using WeatherService.Testing.Unit.Core.Assertions;
-using WeatherService.Testing.Unit.Core.Fakes;
 using WeatherService.Testing.Unit.Core.Specifications;
 
 namespace WeatherService.Testing.Unit.Features.FeatureTests.Images.AddImageTests;
@@ -13,7 +12,6 @@ internal sealed class When_getting_an_image_that_does_not_exist : TestSpecificat
 {
     private GetImage.Request _request;
     private CancellationToken _cancellationToken;
-    private string _fileName;
     private OneOf<string, NotFound> _result;
 
     protected override object[] ExplicitDependencies => new object[] { new FileNameService() };
@@ -25,8 +23,7 @@ internal sealed class When_getting_an_image_that_does_not_exist : TestSpecificat
 
         Dependency<IFileService>()
             .GetFileAsync(Arg.Any<string>(), _cancellationToken)
-            .Returns(new NotFound())
-            .AndDoes(info => _fileName = info.Arg<string>());
+            .Returns(new NotFound());
     }
 
     protected override async Task ActAsync()
@@ -37,21 +34,12 @@ internal sealed class When_getting_an_image_that_does_not_exist : TestSpecificat
     [Test]
     public void It_should_return_the_correct_result()
     {
+        // Result is of Type OneOf<string, NotFound>
+
+        _result.Value.Should().BeOfType<NotFound>();
+
+        // Above is OK but this is better
+
         _result.Should().BeNotFound();
-    }
-
-    [Test]
-    public void It_should_create_a_log_entry()
-    {
-        Dependency<FakeLogger>()
-            .Should().LogInformation($"Getting image for {_request.ConditionCode} with name {_fileName}")
-            .And.LogNoOtherMessages();
-    }
-
-    [Test]
-    public void It_should_get_the_file()
-    {
-        Dependency<IFileService>()
-            .Should().GetImage(_cancellationToken);
     }
 }

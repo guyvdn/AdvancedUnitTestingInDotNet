@@ -2,7 +2,7 @@
 using WeatherService.Core.Services;
 using WeatherService.Testing.Unit.Core;
 using WeatherService.Testing.Unit.Core.Assertions;
-using WeatherService.Testing.Unit.Core.Fakes;
+using WeatherService.Testing.Unit.Core.Dependencies;
 using WeatherService.Testing.Unit.Core.Specifications;
 
 namespace WeatherService.Testing.Unit.Features.FeatureTests.Images.AddImageTests;

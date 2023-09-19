@@ -20,7 +20,7 @@ internal sealed class ImagesControllerTest
 {
 }
 
-//internal sealed class BadWeatherForecastControllerTest 
-//    : ControllerTestSpecification<BadWeatherForecastsController>
-//{
-//}
+internal sealed class BadWeatherForecastControllerTest
+    : ControllerTestSpecification<BadWeatherForecastsController>
+{
+}

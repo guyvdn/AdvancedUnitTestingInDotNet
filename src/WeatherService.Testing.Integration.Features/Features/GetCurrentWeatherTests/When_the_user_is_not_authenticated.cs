@@ -13,6 +13,7 @@ internal sealed class When_the_user_is_not_authenticated
 
     protected override void Arrange()
     {
+        // We can choose if the user is Authenticated or not
         Factory.RequestIsAuthenticated = false;
     }
 

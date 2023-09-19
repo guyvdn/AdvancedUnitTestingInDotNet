@@ -5,7 +5,7 @@ namespace WeatherService.Core.Features.Images;
 
 public static class AddImage
 {
-    public sealed class Request: IRequest
+    public sealed class Request : IRequest
     {
         public required int ConditionCode { get; init; }
 
@@ -29,7 +29,7 @@ public static class AddImage
         private static bool IsBase64String(string base64)
         {
             var buffer = new Span<byte>(new byte[base64.Length]);
-            return Convert.TryFromBase64String(base64, buffer , out _);
+            return Convert.TryFromBase64String(base64, buffer, out _);
         }
     }
 
@@ -49,9 +49,9 @@ public static class AddImage
         public async Task Handle(Request request, CancellationToken cancellationToken)
         {
             var fileName = _fileNameService.GetImageName(request.ConditionCode);
-            
-            _logger.LogInformation("Creating image for {ConditionCode} with name {FileName}", request.ConditionCode,fileName);
-            
+
+            _logger.LogInformation("Creating image for {ConditionCode} with name {FileName}", request.ConditionCode, fileName);
+
             var fileContent = Convert.FromBase64String(request.Base64Content);
 
             await _fileService.SaveFileAsync(fileName, fileContent, cancellationToken);

@@ -45,7 +45,7 @@ public sealed class TestApplicationFactory : WebApplicationFactory<Api.AssemblyM
         builder.ConfigureAppConfiguration((hostingContext, config) =>
         {
             config.AddJsonFile(path: "appsettings.json");
-            config.AddJsonFile(path: $"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true);
+            config.AddJsonFile(path: "appsettings.IntegrationTesting.json", optional: true);
             config.AddInMemoryCollection(_appSettings);
         });
 

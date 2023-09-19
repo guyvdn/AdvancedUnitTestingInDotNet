@@ -20,6 +20,7 @@ internal sealed class When_getting_a_WeatherForecast : TestSpecification
     private WeatherResponse _currentWeather;
     private WeatherResponse _response;
 
+    // Instead of using TestSpecification<TSut> we can use Freeze of AutoFixture
     protected override void Arrange()
     {
         var user = Fixture.Create("User");
@@ -29,9 +30,10 @@ internal sealed class When_getting_a_WeatherForecast : TestSpecification
 
         Fixture.Customize(new AutoNSubstituteCustomization());
 
+        // By using Freeze we make sure the same instance is returned always
         Fixture.Freeze<IHttpContextAccessor>()
             .HttpContext
-            .Returns(CreateAuthenticatedHttpContext(user));
+            .Returns(Build.AuthenticatedHttpContext(user));
 
         // Strict mocking with NSubstitute
         Fixture.Freeze<IWeatherRepository>()
@@ -39,7 +41,7 @@ internal sealed class When_getting_a_WeatherForecast : TestSpecification
             .ThrowsAsync(_ => new SubstituteException("No matching setup found for AddAuditLogAsync"));
 
         Fixture.Create<IWeatherRepository>()
-            .Configure()
+            .Configure() // Is needed so that the next line will not throw here
             .AddAuditLogAsync(Arg.Is<AuditLog>(x => x.NameIdentifier == user), _cancellationToken)
             .Returns(Task.CompletedTask);
 
@@ -64,23 +66,9 @@ internal sealed class When_getting_a_WeatherForecast : TestSpecification
     [Test]
     public void Should_call_the_api_with_the_correct_parameters()
     {
+        // When using Loose mocking, strict validation is needed
         Fixture.Create<IWeatherApiClient>()
             .Received(1)
             .GetCurrentWeatherAsync(_request.City, _cancellationToken);
-    }
-
-    private static DefaultHttpContext CreateAuthenticatedHttpContext(string user)
-    {
-        var claims = new List<Claim>
-        {
-            new(ClaimTypes.NameIdentifier, user)
-        };
-
-        var identity = new ClaimsIdentity(claims);
-
-        return new DefaultHttpContext
-        {
-            User = new ClaimsPrincipal(identity)
-        };
     }
 }

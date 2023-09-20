@@ -2,7 +2,7 @@ using WeatherService.Core.Features.WeatherForecasts;
 
 namespace WeatherService.Api.Features.WeatherForecasts;
 
-// [Authorize] Would you spot this with manual testing?
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public sealed class WeatherForecastsController : ControllerBase

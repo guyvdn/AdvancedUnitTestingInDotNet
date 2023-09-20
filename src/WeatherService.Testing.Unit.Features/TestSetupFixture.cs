@@ -8,7 +8,7 @@ public sealed class TestSetupFixture
     [OneTimeSetUp]
     public void RunBeforeAnyTests()
     {
-        TestSetup.Equivalency<Unit.Core.AssemblyMarker>();
+        TestSetup.Equivalency<Testing.Unit.Core.AssemblyMarker>();
         TestSetup.Equivalency<AssemblyMarker>();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Docker.DotNet;
 using Docker.DotNet.Models;
+using FluentAssertions.Extensions;
 using Microsoft.Data.SqlClient;
 
 namespace WeatherService.Testing.Integration.Core.Infrastructure.Database;
@@ -56,7 +57,7 @@ internal sealed class SqlDockerDb : IDisposable
 
     private static async Task WaitForSqlToBeStarted()
     {
-        var cancellationToken = new CancellationTokenSource(60_000).Token;
+        var cancellationToken = Build.CancellationToken(60.Seconds());
 
         while (!cancellationToken.IsCancellationRequested)
         {

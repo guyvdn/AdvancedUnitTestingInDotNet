@@ -50,7 +50,6 @@ public sealed class FakeLogger<T> : FakeLogger, ILogger<T>
 
         public void Dispose()
         {
-            // Nothing to Dispose
         }
     }
 }

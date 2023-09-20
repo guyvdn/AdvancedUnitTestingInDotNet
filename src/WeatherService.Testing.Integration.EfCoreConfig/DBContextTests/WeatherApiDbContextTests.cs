@@ -17,6 +17,6 @@ internal sealed class WeatherApiDbContextTests
     /// </summary>
     protected override string ErrorsToIgnore() =>
         """
-        DIFFERENT: AuditLog->Property 'TimeStampUTC', column type. Expected = datetime3, found = datetime
+        DIFFERENT: AuditLog->Property 'TimeStampUTC', column type. Expected = datetime2, found = datetime
         """;
 }

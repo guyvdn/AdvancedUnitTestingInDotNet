@@ -9,7 +9,7 @@ public static class GetAuditLogs
         public required int NumberOfDays { get; init; }
     }
 
-    internal sealed class Validator : AbstractValidator<Request>
+    public sealed class Validator : AbstractValidator<Request>
     {
         public Validator()
         {
@@ -18,7 +18,7 @@ public static class GetAuditLogs
         }
     }
 
-    internal sealed class Handler : IRequestHandler<Request, List<AuditLog>>
+    public sealed class Handler : IRequestHandler<Request, List<AuditLog>>
     {
         private readonly IWeatherRepository _weatherRepository;
 

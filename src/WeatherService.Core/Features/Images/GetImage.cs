@@ -20,7 +20,7 @@ public static class GetImage
         }
     }
 
-    internal sealed class Handler : IRequestHandler<Request, OneOf<string, NotFound>>
+    public sealed class Handler : IRequestHandler<Request, OneOf<string, NotFound>>
     {
         private readonly IFileNameService _fileNameService;
         private readonly IFileService _fileService;

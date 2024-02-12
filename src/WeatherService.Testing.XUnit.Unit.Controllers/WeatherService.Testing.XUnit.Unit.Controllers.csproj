@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\WeatherService.Core\WeatherService.Core.csproj" />
+		<ProjectReference Include="..\WeatherService.Testing.XUnit.Unit.Core\WeatherService.Testing.XUnit.Unit.Core.csproj" />
+		<ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
+	</ItemGroup>
+
+</Project>

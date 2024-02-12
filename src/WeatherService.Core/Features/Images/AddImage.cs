@@ -12,7 +12,7 @@ public static class AddImage
         public required string Base64Content { get; init; }
     }
 
-    internal sealed class Validator : AbstractValidator<Request>
+    public sealed class Validator : AbstractValidator<Request>
     {
         public Validator()
         {
@@ -33,7 +33,7 @@ public static class AddImage
         }
     }
 
-    internal sealed class Handler : IRequestHandler<Request>
+    public sealed class Handler : IRequestHandler<Request>
     {
         private readonly IFileNameService _fileNameService;
         private readonly IFileService _fileService;

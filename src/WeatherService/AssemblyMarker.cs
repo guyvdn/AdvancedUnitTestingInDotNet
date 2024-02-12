@@ -1,10 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("WeatherService.Testing.Unit.Core")]
-[assembly: InternalsVisibleTo("WeatherService.Testing.Unit.Features")]
-[assembly: InternalsVisibleTo("WeatherService.Testing.Unit.Controllers")]
-[assembly: InternalsVisibleTo("WeatherService.Testing.Integration.Core")]
-[assembly: InternalsVisibleTo("WeatherService.Testing.Integration.Features")]
+[assembly: InternalsVisibleTo("WeatherService.Testing.NUnit.Unit.Core")]
+[assembly: InternalsVisibleTo("WeatherService.Testing.NUnit.Unit.Features")]
+[assembly: InternalsVisibleTo("WeatherService.Testing.NUnit.Unit.Controllers")]
+[assembly: InternalsVisibleTo("WeatherService.Testing.NUnit.Integration.Core")]
+[assembly: InternalsVisibleTo("WeatherService.Testing.NUnit.Integration.Features")]
 
 namespace WeatherService.Api;
 

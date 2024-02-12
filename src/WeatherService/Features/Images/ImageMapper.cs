@@ -3,7 +3,7 @@ using WeatherService.Representation;
 
 namespace WeatherService.Api.Features.Images;
 
-internal static class ImageMapper
+public static class ImageMapper
 {
     public static AddImage.Request ToRequest(this Image image)
     {

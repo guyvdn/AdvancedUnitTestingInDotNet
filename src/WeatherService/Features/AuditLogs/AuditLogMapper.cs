@@ -2,7 +2,7 @@
 
 namespace WeatherService.Api.Features.AuditLogs;
 
-internal static class AuditLogMapper
+public static class AuditLogMapper
 {
     public static Representation.AuditLog ToRepresentation(this AuditLog auditLog)
     { 

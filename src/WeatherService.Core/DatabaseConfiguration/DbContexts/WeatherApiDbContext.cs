@@ -3,7 +3,7 @@ using WeatherService.Core.Features.AuditLogs.Models;
 
 namespace WeatherService.Core.DatabaseConfiguration.DbContexts;
 
-internal class WeatherApiDbContext : DbContext
+public class WeatherApiDbContext : DbContext
 {
     public WeatherApiDbContext(DbContextOptions<WeatherApiDbContext> options) : base(options)
     {

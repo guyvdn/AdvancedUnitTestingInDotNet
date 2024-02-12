@@ -1,11 +1,11 @@
 ﻿namespace WeatherService.Core.Services;
 
-internal interface IFileNameService
+public interface IFileNameService
 {
     string GetImageName(int conditionCode);
 }
 
-internal sealed class FileNameService : IFileNameService
+public sealed class FileNameService : IFileNameService
 {
     public string GetImageName(int conditionCode)
     {

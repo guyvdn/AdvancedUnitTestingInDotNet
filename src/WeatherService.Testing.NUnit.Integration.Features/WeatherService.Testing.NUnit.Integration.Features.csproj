@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\WeatherService.Core\WeatherService.Core.csproj" />
+	  <ProjectReference Include="..\WeatherService.Testing.NUnit.Integration.Core\WeatherService.Testing.NUnit.Integration.Core.csproj" />
+	  <ProjectReference Include="..\WeatherService\WeatherService.Api.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="AutoFixture" Version="4.18.1" />
+	  <PackageReference Update="AutoFixture.AutoNSubstitute" Version="4.18.1" />
+	  <PackageReference Update="AutoFixture.NUnit3" Version="4.18.1" />
+	  <PackageReference Update="AutoFixture.SeedExtensions" Version="4.18.1" />
+	</ItemGroup>
+
+</Project>
